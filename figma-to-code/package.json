@@ -1,0 +1,39 @@
+{
+  "name": "figma-to-code",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Figma-to-Code token synchronization pipeline for Angular + SCSS",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "plugin:build": "node --import tsx scripts/build-plugin.ts",
+    "tokens:bootstrap": "node --import tsx scripts/bootstrap-tokens.ts",
+    "tokens:scan": "node --import tsx scripts/scan-tokens.ts",
+    "tokens:resolve": "node --import tsx scripts/resolve-tokens.ts",
+    "tokens:validate": "node --import tsx scripts/validate-tokens.ts",
+    "tokens:sync": "node --import tsx scripts/sync-tokens.ts",
+    "tokens:check-stale": "node --import tsx scripts/check-stale-generated.ts",
+    "ui-spec:validate": "node --import tsx scripts/validate-ui-spec.ts",
+    "verify:automatable": "node --import tsx scripts/verify-automatable.ts",
+    "ci": "npm run typecheck && npm run test && npm run build && npm run plugin:build && npm run tokens:sync -- --fixture && npm run tokens:check-stale -- --fixture"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "postcss": "^8.5.3",
+    "postcss-scss": "^4.0.9"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9"
+  }
+}

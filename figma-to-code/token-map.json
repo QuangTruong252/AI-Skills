@@ -1,0 +1,436 @@
+{
+  "mappings": [
+    {
+      "figmaToken": "Colors/Base/black",
+      "status": "approved",
+      "systemToken": "--brand-black"
+    },
+    {
+      "figmaToken": "Colors/Base/danger",
+      "status": "approved",
+      "systemToken": "--brand-danger"
+    },
+    {
+      "figmaToken": "Colors/Base/primary",
+      "status": "approved",
+      "systemToken": "--brand-primary"
+    },
+    {
+      "figmaToken": "Colors/Base/secondary",
+      "status": "approved",
+      "systemToken": "--brand-secondary"
+    },
+    {
+      "figmaToken": "Colors/Base/success",
+      "status": "approved",
+      "systemToken": "--brand-success"
+    },
+    {
+      "figmaToken": "Colors/Base/warning",
+      "status": "approved",
+      "systemToken": "--brand-warning"
+    },
+    {
+      "figmaToken": "Colors/Base/white",
+      "status": "approved",
+      "systemToken": "--brand-white"
+    },
+    {
+      "figmaToken": "Colors/dark-primary-text",
+      "status": "approved",
+      "systemToken": "--mapped-primary-text"
+    },
+    {
+      "figmaToken": "Colors/dark-shadow",
+      "status": "approved",
+      "systemToken": "--mapped-shadow"
+    },
+    {
+      "figmaToken": "Colors/light-primary-text",
+      "status": "approved",
+      "systemToken": "--mapped-primary-text"
+    },
+    {
+      "figmaToken": "Colors/light-shadow",
+      "status": "approved",
+      "systemToken": "--mapped-shadow"
+    },
+    {
+      "figmaToken": "Colors/Neutral/neutral-100",
+      "status": "approved",
+      "systemToken": "--alias-neutral-100"
+    },
+    {
+      "figmaToken": "Colors/Neutral/neutral-200",
+      "status": "approved",
+      "systemToken": "--alias-neutral-200"
+    },
+    {
+      "figmaToken": "Colors/Neutral/neutral-300",
+      "status": "approved",
+      "systemToken": "--alias-neutral-300"
+    },
+    {
+      "figmaToken": "Colors/Neutral/neutral-400",
+      "status": "approved",
+      "systemToken": "--alias-neutral-400"
+    },
+    {
+      "figmaToken": "Colors/Neutral/neutral-50",
+      "status": "approved",
+      "systemToken": "--alias-neutral-50"
+    },
+    {
+      "figmaToken": "Colors/Neutral/neutral-500",
+      "status": "approved",
+      "systemToken": "--alias-neutral-500"
+    },
+    {
+      "figmaToken": "Colors/Neutral/neutral-600",
+      "status": "approved",
+      "systemToken": "--alias-neutral-600"
+    },
+    {
+      "figmaToken": "Colors/Neutral/neutral-700",
+      "status": "approved",
+      "systemToken": "--alias-neutral-700"
+    },
+    {
+      "figmaToken": "Colors/Neutral/neutral-800",
+      "status": "approved",
+      "systemToken": "--alias-neutral-800"
+    },
+    {
+      "figmaToken": "Colors/Neutral/neutral-900",
+      "status": "approved",
+      "systemToken": "--alias-neutral-900"
+    },
+    {
+      "figmaToken": "Colors/Neutral/neutral-950",
+      "status": "approved",
+      "systemToken": "--alias-neutral-950"
+    },
+    {
+      "figmaToken": "Colors/primary-background",
+      "status": "approved",
+      "systemToken": "--mapped-primary-background"
+    },
+    {
+      "figmaToken": "Colors/primary-text",
+      "status": "approved",
+      "systemToken": "--mapped-primary-text"
+    },
+    {
+      "figmaToken": "Colors/Primary/primary-100",
+      "status": "approved",
+      "systemToken": "--alias-primay-100"
+    },
+    {
+      "figmaToken": "Colors/Primary/primary-200",
+      "status": "approved",
+      "systemToken": "--alias-primay-200"
+    },
+    {
+      "figmaToken": "Colors/Primary/primary-300",
+      "status": "approved",
+      "systemToken": "--alias-primay-300"
+    },
+    {
+      "figmaToken": "Colors/Primary/primary-400",
+      "status": "approved",
+      "systemToken": "--alias-primay-400"
+    },
+    {
+      "figmaToken": "Colors/Primary/primary-50",
+      "status": "approved",
+      "systemToken": "--alias-primay-50"
+    },
+    {
+      "figmaToken": "Colors/Primary/primary-500",
+      "status": "approved",
+      "systemToken": "--alias-primay-default"
+    },
+    {
+      "figmaToken": "Colors/Primary/primary-600",
+      "status": "approved",
+      "systemToken": "--alias-primay-600"
+    },
+    {
+      "figmaToken": "Colors/Primary/primary-700",
+      "status": "approved",
+      "systemToken": "--alias-primay-700"
+    },
+    {
+      "figmaToken": "Colors/Primary/primary-800",
+      "status": "approved",
+      "systemToken": "--alias-primay-800"
+    },
+    {
+      "figmaToken": "Colors/Primary/primary-900",
+      "status": "approved",
+      "systemToken": "--alias-primay-900"
+    },
+    {
+      "figmaToken": "Colors/Primary/primary-950",
+      "status": "approved",
+      "systemToken": "--alias-primay-950"
+    },
+    {
+      "figmaToken": "Colors/secondary-background",
+      "status": "approved",
+      "systemToken": "--mapped-secondary-background"
+    },
+    {
+      "figmaToken": "Colors/secondary-text",
+      "status": "approved",
+      "systemToken": "--mapped-secondary-text"
+    },
+    {
+      "figmaToken": "Colors/shadow",
+      "status": "approved",
+      "systemToken": "--mapped-shadow"
+    },
+    {
+      "figmaToken": "Numbers/border-radius",
+      "status": "approved",
+      "systemToken": "--mapped-border-radius"
+    },
+    {
+      "figmaToken": "Numbers/layout/desktop-columns",
+      "status": "approved",
+      "systemToken": "--app-layout-desktop-columns"
+    },
+    {
+      "figmaToken": "Numbers/layout/desktop-height",
+      "status": "approved",
+      "systemToken": "--app-layout-desktop-height"
+    },
+    {
+      "figmaToken": "Numbers/layout/desktop-margin-x",
+      "status": "approved",
+      "systemToken": "--app-layout-desktop-margin-x"
+    },
+    {
+      "figmaToken": "Numbers/layout/desktop-max-width",
+      "status": "approved",
+      "systemToken": "--app-layout-desktop-max-width"
+    },
+    {
+      "figmaToken": "Numbers/layout/desktop-max-width--lg",
+      "status": "approved",
+      "systemToken": "--app-layout-desktop-max-width--lg"
+    },
+    {
+      "figmaToken": "Numbers/layout/desktop-width",
+      "status": "approved",
+      "systemToken": "--app-layout-desktop-width"
+    },
+    {
+      "figmaToken": "Numbers/layout/mobile-columns",
+      "status": "approved",
+      "systemToken": "--app-layout-mobile-columns"
+    },
+    {
+      "figmaToken": "Numbers/layout/mobile-height",
+      "status": "approved",
+      "systemToken": "--app-layout-mobile-height"
+    },
+    {
+      "figmaToken": "Numbers/layout/mobile-max-width",
+      "status": "approved",
+      "systemToken": "--app-layout-mobile-max-width"
+    },
+    {
+      "figmaToken": "Numbers/layout/mobile-padding-x",
+      "status": "approved",
+      "systemToken": "--app-layout-mobile-padding-x"
+    },
+    {
+      "figmaToken": "Numbers/layout/mobile-width",
+      "status": "approved",
+      "systemToken": "--app-layout-mobile-width"
+    },
+    {
+      "figmaToken": "Numbers/size/size-0,5",
+      "status": "approved",
+      "systemToken": "--app-size-0-5"
+    },
+    {
+      "figmaToken": "Numbers/size/size-1",
+      "status": "approved",
+      "systemToken": "--app-size-1"
+    },
+    {
+      "figmaToken": "Numbers/size/size-1,5",
+      "status": "approved",
+      "systemToken": "--app-size-1-5"
+    },
+    {
+      "figmaToken": "Numbers/size/size-10",
+      "status": "approved",
+      "systemToken": "--app-size-10"
+    },
+    {
+      "figmaToken": "Numbers/size/size-100",
+      "status": "approved",
+      "systemToken": "--app-size-100"
+    },
+    {
+      "figmaToken": "Numbers/size/size-12",
+      "status": "approved",
+      "systemToken": "--app-size-12"
+    },
+    {
+      "figmaToken": "Numbers/size/size-128",
+      "status": "approved",
+      "systemToken": "--app-size-128"
+    },
+    {
+      "figmaToken": "Numbers/size/size-16",
+      "status": "approved",
+      "systemToken": "--app-size-16"
+    },
+    {
+      "figmaToken": "Numbers/size/size-2",
+      "status": "approved",
+      "systemToken": "--app-size-2"
+    },
+    {
+      "figmaToken": "Numbers/size/size-2,5",
+      "status": "approved",
+      "systemToken": "--app-size-2-5"
+    },
+    {
+      "figmaToken": "Numbers/size/size-20",
+      "status": "approved",
+      "systemToken": "--app-size-20"
+    },
+    {
+      "figmaToken": "Numbers/size/size-24",
+      "status": "approved",
+      "systemToken": "--app-size-24"
+    },
+    {
+      "figmaToken": "Numbers/size/size-256",
+      "status": "approved",
+      "systemToken": "--app-size-256"
+    },
+    {
+      "figmaToken": "Numbers/size/size-27",
+      "status": "approved",
+      "systemToken": "--app-size-27"
+    },
+    {
+      "figmaToken": "Numbers/size/size-3",
+      "status": "approved",
+      "systemToken": "--app-size-3"
+    },
+    {
+      "figmaToken": "Numbers/size/size-3,5",
+      "status": "approved",
+      "systemToken": "--app-size-3-5"
+    },
+    {
+      "figmaToken": "Numbers/size/size-32",
+      "status": "approved",
+      "systemToken": "--app-size-32"
+    },
+    {
+      "figmaToken": "Numbers/size/size-36",
+      "status": "approved",
+      "systemToken": "--app-size-36"
+    },
+    {
+      "figmaToken": "Numbers/size/size-4",
+      "status": "approved",
+      "systemToken": "--app-size-4"
+    },
+    {
+      "figmaToken": "Numbers/size/size-4,5",
+      "status": "approved",
+      "systemToken": "--app-size-4-5"
+    },
+    {
+      "figmaToken": "Numbers/size/size-42",
+      "status": "approved",
+      "systemToken": "--app-size-42"
+    },
+    {
+      "figmaToken": "Numbers/size/size-45",
+      "status": "approved",
+      "systemToken": "--app-size-45"
+    },
+    {
+      "figmaToken": "Numbers/size/size-5",
+      "status": "approved",
+      "systemToken": "--app-size-5"
+    },
+    {
+      "figmaToken": "Numbers/size/size-5,5",
+      "status": "approved",
+      "systemToken": "--app-size-5-5"
+    },
+    {
+      "figmaToken": "Numbers/size/size-50",
+      "status": "approved",
+      "systemToken": "--app-size-50"
+    },
+    {
+      "figmaToken": "Numbers/size/size-56",
+      "status": "approved",
+      "systemToken": "--app-size-56"
+    },
+    {
+      "figmaToken": "Numbers/size/size-6",
+      "status": "approved",
+      "systemToken": "--app-size-6"
+    },
+    {
+      "figmaToken": "Numbers/size/size-6,5",
+      "status": "approved",
+      "systemToken": "--app-size-6-5"
+    },
+    {
+      "figmaToken": "Numbers/size/size-64",
+      "status": "approved",
+      "systemToken": "--app-size-64"
+    },
+    {
+      "figmaToken": "Numbers/size/size-7",
+      "status": "approved",
+      "systemToken": "--app-size-7"
+    },
+    {
+      "figmaToken": "Numbers/size/size-8",
+      "status": "approved",
+      "systemToken": "--app-size-8"
+    },
+    {
+      "figmaToken": "Numbers/size/size-80",
+      "status": "approved",
+      "systemToken": "--app-size-80"
+    },
+    {
+      "figmaToken": "Numbers/size/size-9",
+      "status": "approved",
+      "systemToken": "--app-size-9"
+    },
+    {
+      "figmaToken": "Numbers/size/size-90",
+      "status": "approved",
+      "systemToken": "--app-size-90"
+    },
+    {
+      "figmaToken": "Strings/font/primary",
+      "status": "approved",
+      "systemToken": "--app-font-primary"
+    },
+    {
+      "figmaToken": "Strings/font/secondary",
+      "status": "approved",
+      "systemToken": "--app-font-secondary"
+    }
+  ],
+  "schemaVersion": "1.0.0",
+  "usedFigmaTokens": []
+}

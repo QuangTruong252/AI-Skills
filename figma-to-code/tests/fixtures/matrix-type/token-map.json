@@ -1,0 +1,10 @@
+{
+  "mappings": [
+    {
+      "figmaToken": "brand/primary",
+      "status": "approved",
+      "systemToken": "--app-layout-gap-padding"
+    }
+  ],
+  "schemaVersion": "1.0.0"
+}

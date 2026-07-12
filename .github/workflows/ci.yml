@@ -1,0 +1,47 @@
+name: figma-to-code CI
+
+on:
+  push:
+    paths:
+      - 'figma-to-code/**'
+      - 'styles/**'
+      - '.github/workflows/ci.yml'
+  pull_request:
+    paths:
+      - 'figma-to-code/**'
+      - 'styles/**'
+      - '.github/workflows/ci.yml'
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: figma-to-code
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: figma-to-code/package-lock.json
+      - name: Install
+        run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Unit and integration tests
+        run: npm test
+      - name: Build package
+        run: npm run build
+      - name: Build Figma plugin
+        run: npm run plugin:build
+      - name: Fixture tokens sync
+        run: npm run tokens:sync -- --fixture
+      - name: Stale generated check (fixture)
+        run: npm run tokens:check-stale -- --fixture
+      - name: Scan real SCSS token tree
+        run: npm run tokens:scan
+      - name: Validate UI spec fixture
+        run: npm run ui-spec:validate
+      - name: Automatable verification
+        run: npm run verify:automatable

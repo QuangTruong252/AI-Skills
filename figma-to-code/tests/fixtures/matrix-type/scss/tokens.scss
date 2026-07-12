@@ -1,0 +1,16 @@
+:root {
+  --brand-coral-500: #e7404b;
+  --alias-primay-default: var(--brand-coral-500);
+  --mapped-surface-action: var(--alias-primay-default);
+  --app-primary: var(--mapped-surface-action);
+  --app-text: #333333;
+}
+
+:root,
+[data-theme='light'] {
+  --app-bg: #fefffc;
+}
+
+[data-theme='dark'] {
+  --app-bg: #050203;
+}

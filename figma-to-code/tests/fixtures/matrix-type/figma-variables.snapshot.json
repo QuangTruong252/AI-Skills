@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "1.0.0",
+  "documentName": "e2e-happy",
+  "pluginVersion": "1.0.0",
+  "exportTime": "1970-01-01T00:00:00.000Z",
+  "collections": [
+    {
+      "id": "col-brand",
+      "name": "Brand",
+      "modes": [
+        { "id": "mode-default", "name": "Default" }
+      ],
+      "variables": [
+        {
+          "id": "var-primary",
+          "name": "brand/primary",
+          "originalName": "brand/primary",
+          "normalizedName": "brand/primary",
+          "collectionId": "col-brand",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "mode-default": { "kind": "literal", "value": "#e7404b" }
+          }
+        },
+        {
+          "id": "var-app-primary",
+          "name": "app/primary",
+          "originalName": "app/primary",
+          "normalizedName": "app/primary",
+          "collectionId": "col-brand",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "mode-default": {
+              "kind": "alias",
+              "variableId": "var-primary",
+              "variableName": "brand/primary"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "diagnostics": []
+}
