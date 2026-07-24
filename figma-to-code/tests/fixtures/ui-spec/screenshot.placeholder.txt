@@ -1,1 +1,0 @@
-PLACEHOLDER screenshot evidence for offline UI analyzer fixtures. Not a live Figma capture.
