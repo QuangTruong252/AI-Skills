@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ui-spec.schema.json",
+  "title": "UiSpec",
+  "type": "object",
+  "required": ["schemaVersion", "source", "tree", "diagnostics"],
+  "additionalProperties": true,
+  "properties": {
+    "schemaVersion": { "type": "string" },
+    "source": {
+      "type": "object",
+      "properties": {
+        "figmaNodeUrl": { "type": "string" },
+        "nodeId": { "type": "string" },
+        "screenshotPath": { "type": "string" }
+      }
+    },
+    "tree": { "$ref": "#/$defs/node" },
+    "assets": { "type": "array", "items": { "type": "string" } },
+    "states": { "type": "array", "items": { "type": "string" } },
+    "diagnostics": { "type": "array" }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "required": ["id", "name", "type"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "children": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/node" }
+        },
+        "autoLayout": { "type": "object" },
+        "sizing": { "type": "object" },
+        "constraints": {},
+        "tokenReferences": { "type": "array" },
+        "hardValues": { "type": "array" },
+        "responsiveIntent": {
+          "type": "string",
+          "enum": [
+            "Intrinsic",
+            "Fluid",
+            "Fixed",
+            "Min/max constrained",
+            "Breakpoint-dependent",
+            "Content-dependent",
+            "Decorative absolute"
+          ]
+        },
+        "componentMatch": { "type": "object" }
+      }
+    }
+  }
+}

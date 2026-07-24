@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "1.0.0",
+  "scss": {
+    "tokenPaths": ["../styles/tokens", "../styles/_variables.scss"],
+    "includePrivate": false,
+    "tokenNamespaces": [
+      "--brand-",
+      "--alias-",
+      "--mapped-",
+      "--state-",
+      "--app-",
+      "--calendar-"
+    ],
+    "privatePrefix": "--_",
+    "layerHeuristics": {
+      "brand": "brand",
+      "alias": "alias",
+      "mapped-light": "mapped",
+      "mapped-dark": "mapped",
+      "state": "state",
+      "semantic": "semantic",
+      "typography": "typography",
+      "responsive": "responsive",
+      "effects": "effects",
+      "variables": "app"
+    }
+  },
+  "figma": {
+    "snapshotPath": "generated/figma-variables.snapshot.json",
+    "pluginVersion": "1.0.0"
+  },
+  "mapping": {
+    "tokenMapPath": "token-map.json"
+  },
+  "output": {
+    "registryPath": "generated/token-registry.generated.json",
+    "adapterScssPath": "generated/mapped.generated.scss",
+    "uiSpecPath": "generated/ui-spec.generated.json",
+    "systemRegistryDebugPath": "generated/system-token-registry.debug.json"
+  },
+  "breakpoints": {
+    "source": "../styles/tokens/_breakpoints.scss",
+    "viewports": [
+      { "name": "mobile", "width": 480 },
+      { "name": "wide-mobile", "width": 600 },
+      { "name": "tablet", "width": 768 },
+      { "name": "laptop", "width": 1024 },
+      { "name": "large", "width": 1200 },
+      { "name": "desktop", "width": 1440 }
+    ]
+  },
+  "valueDrift": {
+    "enabled": true,
+    "normalizeColors": true
+  },
+  "freezeExportTime": "1970-01-01T00:00:00.000Z",
+  "bootstrap": {
+    "rules": [
+      {
+        "figmaCollection": "Styles",
+        "namePattern": "^Colors/Base/(primary|secondary|success|warning|danger|white|black)$",
+        "systemNameTemplate": "--brand-$1",
+        "outputFile": "_brand.scss",
+        "modeSelectorMap": { "Mode 1": ":root" }
+      },
+      {
+        "figmaCollection": "Styles",
+        "namePattern": "^Colors/Neutral/neutral-(.*)",
+        "systemNameTemplate": "--alias-neutral-$1",
+        "outputFile": "_alias.scss",
+        "modeSelectorMap": { "Mode 1": ":root" }
+      },
+      {
+        "figmaCollection": "Styles",
+        "namePattern": "^Colors/Primary/primary-500$",
+        "systemNameTemplate": "--alias-primay-default",
+        "outputFile": "_alias.scss",
+        "modeSelectorMap": { "Mode 1": ":root" }
+      },
+      {
+        "figmaCollection": "Styles",
+        "namePattern": "^Colors/Primary/primary-(.*)",
+        "systemNameTemplate": "--alias-primay-$1",
+        "outputFile": "_alias.scss",
+        "modeSelectorMap": { "Mode 1": ":root" }
+      },
+      {
+        "figmaCollection": "Styles",
+        "namePattern": "^Numbers/layout/(.*)",
+        "systemNameTemplate": "--app-layout-$1",
+        "outputFile": "_responsive.scss",
+        "modeSelectorMap": { "Mode 1": ":root" }
+      },
+      {
+        "figmaCollection": "Styles",
+        "namePattern": "^Numbers/size/size-(.*)",
+        "systemNameTemplate": "--app-size-$1",
+        "outputFile": "_brand.scss",
+        "modeSelectorMap": { "Mode 1": ":root" }
+      },
+      {
+        "figmaCollection": "Styles",
+        "namePattern": "^Strings/font/(.*)",
+        "systemNameTemplate": "--app-font-$1",
+        "outputFile": "_typography.scss",
+        "modeSelectorMap": { "Mode 1": ":root" }
+      },
+      {
+        "figmaCollection": "Tokens",
+        "namePattern": "^Colors/dark-primary-text$",
+        "systemNameTemplate": "--mapped-primary-text",
+        "outputFile": "_mapped-dark.scss",
+        "modeSelectorMap": { "Mode 1": "[data-theme='dark']" }
+      },
+      {
+        "figmaCollection": "Tokens",
+        "namePattern": "^Colors/dark-shadow$",
+        "systemNameTemplate": "--mapped-shadow",
+        "outputFile": "_mapped-dark.scss",
+        "modeSelectorMap": { "Mode 1": "[data-theme='dark']" }
+      },
+      {
+        "figmaCollection": "Tokens",
+        "namePattern": "^Colors/light-primary-text$",
+        "systemNameTemplate": "--mapped-primary-text",
+        "outputFile": "_mapped-light.scss",
+        "modeSelectorMap": { "Mode 1": ":root, [data-theme='light']" }
+      },
+      {
+        "figmaCollection": "Tokens",
+        "namePattern": "^Colors/light-shadow$",
+        "systemNameTemplate": "--mapped-shadow",
+        "outputFile": "_mapped-light.scss",
+        "modeSelectorMap": { "Mode 1": ":root, [data-theme='light']" }
+      },
+      {
+        "figmaCollection": "Tokens",
+        "namePattern": "^Colors/(primary-background|primary-text|secondary-background|secondary-text|shadow)",
+        "systemNameTemplate": "--mapped-$1",
+        "outputFile": "_mapped-light.scss",
+        "modeSelectorMap": { "Mode 1": ":root, [data-theme='light']" }
+      },
+      {
+        "figmaCollection": "Tokens",
+        "namePattern": "^Numbers/border-radius",
+        "systemNameTemplate": "--mapped-border-radius",
+        "outputFile": "_brand.scss",
+        "modeSelectorMap": { "Mode 1": ":root" }
+      }
+    ]
+  }
+}

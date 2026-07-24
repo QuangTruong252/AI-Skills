@@ -1,0 +1,13 @@
+{
+  "mappings": [
+    {
+      "figmaToken": "app/primary",
+      "status": "approved",
+      "systemToken": "--nope"
+    }
+  ],
+  "schemaVersion": "1.0.0",
+  "usedFigmaTokens": [
+    "app/primary"
+  ]
+}

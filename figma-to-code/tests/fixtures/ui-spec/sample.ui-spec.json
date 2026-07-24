@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0.0",
+  "source": {
+    "nodeId": "1:2",
+    "figmaNodeUrl": "https://www.figma.com/design/example?node-id=1-2",
+    "screenshotPath": "tests/fixtures/ui-spec/screenshot.placeholder.txt"
+  },
+  "tree": {
+    "id": "1:2",
+    "name": "Button/Primary",
+    "type": "COMPONENT",
+    "autoLayout": {
+      "direction": "HORIZONTAL",
+      "gap": 8,
+      "alignment": "CENTER"
+    },
+    "sizing": {
+      "horizontal": "HUG",
+      "vertical": "HUG"
+    },
+    "responsiveIntent": "Intrinsic",
+    "tokenReferences": [
+      {
+        "property": "fills",
+        "tokenName": "app/primary",
+        "nodeId": "1:2"
+      }
+    ],
+    "hardValues": [],
+    "componentMatch": {
+      "name": "app-button",
+      "confidence": 0.8,
+      "evidence": ["auto-layout horizontal", "primary fill token"]
+    },
+    "children": []
+  },
+  "assets": [],
+  "states": ["default", "hover", "disabled"],
+  "diagnostics": []
+}

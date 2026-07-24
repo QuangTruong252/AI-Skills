@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "token-map.schema.json",
+  "title": "TokenMap",
+  "type": "object",
+  "required": ["schemaVersion", "mappings"],
+  "additionalProperties": true,
+  "properties": {
+    "schemaVersion": { "type": "string" },
+    "usedFigmaTokens": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "mappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["figmaToken", "systemToken", "status"],
+        "properties": {
+          "figmaToken": { "type": "string" },
+          "systemToken": { "type": "string" },
+          "status": { "type": "string", "enum": ["approved", "suggested", "rejected"] },
+          "type": { "type": "string" },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}

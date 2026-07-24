@@ -1,0 +1,1667 @@
+{
+  "schemaVersion": "1.0.0",
+  "documentName": "Figma MCP",
+  "pluginVersion": "1.0.0",
+  "exportTime": "2026-07-12T08:17:03.870Z",
+  "collections": [
+    {
+      "id": "VariableCollectionId:61:83",
+      "name": "Styles",
+      "modes": [
+        {
+          "id": "61:5",
+          "name": "Mode 1"
+        }
+      ],
+      "variables": [
+        {
+          "id": "VariableID:61:114",
+          "name": "Colors/Base/black",
+          "originalName": "Colors/Base/black",
+          "normalizedName": "colors/base/black",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#010508"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:112",
+          "name": "Colors/Base/danger",
+          "originalName": "Colors/Base/danger",
+          "normalizedName": "colors/base/danger",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#e23b58"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:84",
+          "name": "Colors/Base/primary",
+          "originalName": "Colors/Base/primary",
+          "normalizedName": "colors/base/primary",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#23b5e8"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:85",
+          "name": "Colors/Base/secondary",
+          "originalName": "Colors/Base/secondary",
+          "normalizedName": "colors/base/secondary",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#234b96"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:110",
+          "name": "Colors/Base/success",
+          "originalName": "Colors/Base/success",
+          "normalizedName": "colors/base/success",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#23b58b"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:111",
+          "name": "Colors/Base/warning",
+          "originalName": "Colors/Base/warning",
+          "normalizedName": "colors/base/warning",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#e8b523"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:113",
+          "name": "Colors/Base/white",
+          "originalName": "Colors/Base/white",
+          "normalizedName": "colors/base/white",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#f1f5f8"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:121",
+          "name": "Colors/Neutral/neutral-100",
+          "originalName": "Colors/Neutral/neutral-100",
+          "normalizedName": "colors/neutral/neutral-100",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#c4c8ca"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:122",
+          "name": "Colors/Neutral/neutral-200",
+          "originalName": "Colors/Neutral/neutral-200",
+          "normalizedName": "colors/neutral/neutral-200",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#afb2b4"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:123",
+          "name": "Colors/Neutral/neutral-300",
+          "originalName": "Colors/Neutral/neutral-300",
+          "normalizedName": "colors/neutral/neutral-300",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#9a9c9e"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:124",
+          "name": "Colors/Neutral/neutral-400",
+          "originalName": "Colors/Neutral/neutral-400",
+          "normalizedName": "colors/neutral/neutral-400",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#858789"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:120",
+          "name": "Colors/Neutral/neutral-50",
+          "originalName": "Colors/Neutral/neutral-50",
+          "normalizedName": "colors/neutral/neutral-50",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#dadee1"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:125",
+          "name": "Colors/Neutral/neutral-500",
+          "originalName": "Colors/Neutral/neutral-500",
+          "normalizedName": "colors/neutral/neutral-500",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#77797a"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:126",
+          "name": "Colors/Neutral/neutral-600",
+          "originalName": "Colors/Neutral/neutral-600",
+          "normalizedName": "colors/neutral/neutral-600",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#636465"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:127",
+          "name": "Colors/Neutral/neutral-700",
+          "originalName": "Colors/Neutral/neutral-700",
+          "normalizedName": "colors/neutral/neutral-700",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#4f5152"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:128",
+          "name": "Colors/Neutral/neutral-800",
+          "originalName": "Colors/Neutral/neutral-800",
+          "normalizedName": "colors/neutral/neutral-800",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#3c3e3f"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:129",
+          "name": "Colors/Neutral/neutral-900",
+          "originalName": "Colors/Neutral/neutral-900",
+          "normalizedName": "colors/neutral/neutral-900",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#2a2c2d"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:130",
+          "name": "Colors/Neutral/neutral-950",
+          "originalName": "Colors/Neutral/neutral-950",
+          "normalizedName": "colors/neutral/neutral-950",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#191b1c"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:140",
+          "name": "Colors/Primary/primary-100",
+          "originalName": "Colors/Primary/primary-100",
+          "normalizedName": "colors/primary/primary-100",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#b6e6f7"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:141",
+          "name": "Colors/Primary/primary-200",
+          "originalName": "Colors/Primary/primary-200",
+          "normalizedName": "colors/primary/primary-200",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#91daf3"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:142",
+          "name": "Colors/Primary/primary-300",
+          "originalName": "Colors/Primary/primary-300",
+          "normalizedName": "colors/primary/primary-300",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#6ccef0"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:143",
+          "name": "Colors/Primary/primary-400",
+          "originalName": "Colors/Primary/primary-400",
+          "normalizedName": "colors/primary/primary-400",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#48c1ec"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:139",
+          "name": "Colors/Primary/primary-50",
+          "originalName": "Colors/Primary/primary-50",
+          "normalizedName": "colors/primary/primary-50",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#daf3fb"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:144",
+          "name": "Colors/Primary/primary-500",
+          "originalName": "Colors/Primary/primary-500",
+          "normalizedName": "colors/primary/primary-500",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "alias",
+              "variableId": "VariableID:61:84"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:145",
+          "name": "Colors/Primary/primary-600",
+          "originalName": "Colors/Primary/primary-600",
+          "normalizedName": "colors/primary/primary-600",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#159bc9"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:146",
+          "name": "Colors/Primary/primary-700",
+          "originalName": "Colors/Primary/primary-700",
+          "normalizedName": "colors/primary/primary-700",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#117ca1"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:147",
+          "name": "Colors/Primary/primary-800",
+          "originalName": "Colors/Primary/primary-800",
+          "normalizedName": "colors/primary/primary-800",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#0d5d79"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:148",
+          "name": "Colors/Primary/primary-900",
+          "originalName": "Colors/Primary/primary-900",
+          "normalizedName": "colors/primary/primary-900",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#083e51"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:149",
+          "name": "Colors/Primary/primary-950",
+          "originalName": "Colors/Primary/primary-950",
+          "normalizedName": "colors/primary/primary-950",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "#041f28"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:87",
+          "name": "Numbers/layout/desktop-columns",
+          "originalName": "Numbers/layout/desktop-columns",
+          "normalizedName": "numbers/layout/desktop-columns",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 12
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:155",
+          "name": "Numbers/layout/desktop-height",
+          "originalName": "Numbers/layout/desktop-height",
+          "normalizedName": "numbers/layout/desktop-height",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 1024
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:88",
+          "name": "Numbers/layout/desktop-margin-x",
+          "originalName": "Numbers/layout/desktop-margin-x",
+          "normalizedName": "numbers/layout/desktop-margin-x",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 208
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:156",
+          "name": "Numbers/layout/desktop-max-width",
+          "originalName": "Numbers/layout/desktop-max-width",
+          "normalizedName": "numbers/layout/desktop-max-width",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 1024
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:159",
+          "name": "Numbers/layout/desktop-max-width--lg",
+          "originalName": "Numbers/layout/desktop-max-width--lg",
+          "normalizedName": "numbers/layout/desktop-max-width--lg",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 1280
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:86",
+          "name": "Numbers/layout/desktop-width",
+          "originalName": "Numbers/layout/desktop-width",
+          "normalizedName": "numbers/layout/desktop-width",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 1440
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:136",
+          "name": "Numbers/layout/mobile-columns",
+          "originalName": "Numbers/layout/mobile-columns",
+          "normalizedName": "numbers/layout/mobile-columns",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 4
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:154",
+          "name": "Numbers/layout/mobile-height",
+          "originalName": "Numbers/layout/mobile-height",
+          "normalizedName": "numbers/layout/mobile-height",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 956
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:152",
+          "name": "Numbers/layout/mobile-max-width",
+          "originalName": "Numbers/layout/mobile-max-width",
+          "normalizedName": "numbers/layout/mobile-max-width",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 412
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:150",
+          "name": "Numbers/layout/mobile-padding-x",
+          "originalName": "Numbers/layout/mobile-padding-x",
+          "normalizedName": "numbers/layout/mobile-padding-x",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 14
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:135",
+          "name": "Numbers/layout/mobile-width",
+          "originalName": "Numbers/layout/mobile-width",
+          "normalizedName": "numbers/layout/mobile-width",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 440
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:133",
+          "name": "Numbers/size/size-0,5",
+          "originalName": "Numbers/size/size-0,5",
+          "normalizedName": "numbers/size/size-0,5",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 2
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:89",
+          "name": "Numbers/size/size-1",
+          "originalName": "Numbers/size/size-1",
+          "normalizedName": "numbers/size/size-1",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 4
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:134",
+          "name": "Numbers/size/size-1,5",
+          "originalName": "Numbers/size/size-1,5",
+          "normalizedName": "numbers/size/size-1,5",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 6
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:117",
+          "name": "Numbers/size/size-10",
+          "originalName": "Numbers/size/size-10",
+          "normalizedName": "numbers/size/size-10",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 40
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:106",
+          "name": "Numbers/size/size-100",
+          "originalName": "Numbers/size/size-100",
+          "normalizedName": "numbers/size/size-100",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 400
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:157",
+          "name": "Numbers/size/size-12",
+          "originalName": "Numbers/size/size-12",
+          "normalizedName": "numbers/size/size-12",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 48
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:102",
+          "name": "Numbers/size/size-128",
+          "originalName": "Numbers/size/size-128",
+          "normalizedName": "numbers/size/size-128",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 512
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:103",
+          "name": "Numbers/size/size-16",
+          "originalName": "Numbers/size/size-16",
+          "normalizedName": "numbers/size/size-16",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 64
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:90",
+          "name": "Numbers/size/size-2",
+          "originalName": "Numbers/size/size-2",
+          "normalizedName": "numbers/size/size-2",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 8
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:119",
+          "name": "Numbers/size/size-2,5",
+          "originalName": "Numbers/size/size-2,5",
+          "normalizedName": "numbers/size/size-2,5",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 10
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:108",
+          "name": "Numbers/size/size-20",
+          "originalName": "Numbers/size/size-20",
+          "normalizedName": "numbers/size/size-20",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 80
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:109",
+          "name": "Numbers/size/size-24",
+          "originalName": "Numbers/size/size-24",
+          "normalizedName": "numbers/size/size-24",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 96
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:101",
+          "name": "Numbers/size/size-256",
+          "originalName": "Numbers/size/size-256",
+          "normalizedName": "numbers/size/size-256",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 1024
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:151",
+          "name": "Numbers/size/size-27",
+          "originalName": "Numbers/size/size-27",
+          "normalizedName": "numbers/size/size-27",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 108
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:91",
+          "name": "Numbers/size/size-3",
+          "originalName": "Numbers/size/size-3",
+          "normalizedName": "numbers/size/size-3",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 12
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:97",
+          "name": "Numbers/size/size-3,5",
+          "originalName": "Numbers/size/size-3,5",
+          "normalizedName": "numbers/size/size-3,5",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 14
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:99",
+          "name": "Numbers/size/size-32",
+          "originalName": "Numbers/size/size-32",
+          "normalizedName": "numbers/size/size-32",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 128
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:158",
+          "name": "Numbers/size/size-36",
+          "originalName": "Numbers/size/size-36",
+          "normalizedName": "numbers/size/size-36",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 144
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:92",
+          "name": "Numbers/size/size-4",
+          "originalName": "Numbers/size/size-4",
+          "normalizedName": "numbers/size/size-4",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 16
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:98",
+          "name": "Numbers/size/size-4,5",
+          "originalName": "Numbers/size/size-4,5",
+          "normalizedName": "numbers/size/size-4,5",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 18
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:107",
+          "name": "Numbers/size/size-42",
+          "originalName": "Numbers/size/size-42",
+          "normalizedName": "numbers/size/size-42",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 168
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:115",
+          "name": "Numbers/size/size-45",
+          "originalName": "Numbers/size/size-45",
+          "normalizedName": "numbers/size/size-45",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 180
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:93",
+          "name": "Numbers/size/size-5",
+          "originalName": "Numbers/size/size-5",
+          "normalizedName": "numbers/size/size-5",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 20
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:132",
+          "name": "Numbers/size/size-5,5",
+          "originalName": "Numbers/size/size-5,5",
+          "normalizedName": "numbers/size/size-5,5",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 22
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:153",
+          "name": "Numbers/size/size-50",
+          "originalName": "Numbers/size/size-50",
+          "normalizedName": "numbers/size/size-50",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 200
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:118",
+          "name": "Numbers/size/size-56",
+          "originalName": "Numbers/size/size-56",
+          "normalizedName": "numbers/size/size-56",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 224
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:94",
+          "name": "Numbers/size/size-6",
+          "originalName": "Numbers/size/size-6",
+          "normalizedName": "numbers/size/size-6",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 24
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:131",
+          "name": "Numbers/size/size-6,5",
+          "originalName": "Numbers/size/size-6,5",
+          "normalizedName": "numbers/size/size-6,5",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 26
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:100",
+          "name": "Numbers/size/size-64",
+          "originalName": "Numbers/size/size-64",
+          "normalizedName": "numbers/size/size-64",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 256
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:95",
+          "name": "Numbers/size/size-7",
+          "originalName": "Numbers/size/size-7",
+          "normalizedName": "numbers/size/size-7",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 28
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:96",
+          "name": "Numbers/size/size-8",
+          "originalName": "Numbers/size/size-8",
+          "normalizedName": "numbers/size/size-8",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 32
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:104",
+          "name": "Numbers/size/size-80",
+          "originalName": "Numbers/size/size-80",
+          "normalizedName": "numbers/size/size-80",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 320
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:116",
+          "name": "Numbers/size/size-9",
+          "originalName": "Numbers/size/size-9",
+          "normalizedName": "numbers/size/size-9",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 36
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:105",
+          "name": "Numbers/size/size-90",
+          "originalName": "Numbers/size/size-90",
+          "normalizedName": "numbers/size/size-90",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": 360
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:137",
+          "name": "Strings/font/primary",
+          "originalName": "Strings/font/primary",
+          "normalizedName": "strings/font/primary",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "STRING",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "Source Code Pro"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:138",
+          "name": "Strings/font/secondary",
+          "originalName": "Strings/font/secondary",
+          "normalizedName": "strings/font/secondary",
+          "collectionId": "VariableCollectionId:61:83",
+          "resolvedType": "STRING",
+          "valuesByMode": {
+            "61:5": {
+              "kind": "literal",
+              "value": "JetBrains Mono"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        }
+      ]
+    },
+    {
+      "id": "VariableCollectionId:61:160",
+      "name": "Tokens",
+      "modes": [
+        {
+          "id": "61:6",
+          "name": "Mode 1"
+        }
+      ],
+      "variables": [
+        {
+          "id": "VariableID:61:167",
+          "name": "Colors/dark-primary-text",
+          "originalName": "Colors/dark-primary-text",
+          "normalizedName": "colors/dark-primary-text",
+          "collectionId": "VariableCollectionId:61:160",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:6": {
+              "kind": "literal",
+              "value": "#f1f5f8"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:168",
+          "name": "Colors/dark-shadow",
+          "originalName": "Colors/dark-shadow",
+          "normalizedName": "colors/dark-shadow",
+          "collectionId": "VariableCollectionId:61:160",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:6": {
+              "kind": "literal",
+              "value": "rgba(241, 245, 248, 0.5)"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:169",
+          "name": "Colors/light-primary-text",
+          "originalName": "Colors/light-primary-text",
+          "normalizedName": "colors/light-primary-text",
+          "collectionId": "VariableCollectionId:61:160",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:6": {
+              "kind": "literal",
+              "value": "#010508"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:170",
+          "name": "Colors/light-shadow",
+          "originalName": "Colors/light-shadow",
+          "normalizedName": "colors/light-shadow",
+          "collectionId": "VariableCollectionId:61:160",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:6": {
+              "kind": "literal",
+              "value": "rgba(1, 5, 8, 0.5)"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:163",
+          "name": "Colors/primary-background",
+          "originalName": "Colors/primary-background",
+          "normalizedName": "colors/primary-background",
+          "collectionId": "VariableCollectionId:61:160",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:6": {
+              "kind": "literal",
+              "value": "#010508"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:164",
+          "name": "Colors/primary-text",
+          "originalName": "Colors/primary-text",
+          "normalizedName": "colors/primary-text",
+          "collectionId": "VariableCollectionId:61:160",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:6": {
+              "kind": "literal",
+              "value": "#f1f5f8"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:162",
+          "name": "Colors/secondary-background",
+          "originalName": "Colors/secondary-background",
+          "normalizedName": "colors/secondary-background",
+          "collectionId": "VariableCollectionId:61:160",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:6": {
+              "kind": "literal",
+              "value": "#191b1c"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:165",
+          "name": "Colors/secondary-text",
+          "originalName": "Colors/secondary-text",
+          "normalizedName": "colors/secondary-text",
+          "collectionId": "VariableCollectionId:61:160",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:6": {
+              "kind": "literal",
+              "value": "#77797a"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:166",
+          "name": "Colors/shadow",
+          "originalName": "Colors/shadow",
+          "normalizedName": "colors/shadow",
+          "collectionId": "VariableCollectionId:61:160",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "61:6": {
+              "kind": "literal",
+              "value": "rgba(241, 245, 248, 0.5)"
+            }
+          },
+          "description": "",
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:61:161",
+          "name": "Numbers/border-radius",
+          "originalName": "Numbers/border-radius",
+          "normalizedName": "numbers/border-radius",
+          "collectionId": "VariableCollectionId:61:160",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "61:6": {
+              "kind": "literal",
+              "value": 8
+            }
+          },
+          "description": "",
+          "scopes": [
+            "CORNER_RADIUS"
+          ],
+          "codeSyntax": {}
+        }
+      ]
+    }
+  ],
+  "diagnostics": []
+}

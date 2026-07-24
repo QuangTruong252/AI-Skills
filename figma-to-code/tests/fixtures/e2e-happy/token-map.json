@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0.0",
+  "usedFigmaTokens": ["app/primary"],
+  "mappings": [
+    {
+      "figmaToken": "brand/primary",
+      "systemToken": "--brand-coral-500",
+      "status": "approved",
+      "type": "COLOR"
+    },
+    {
+      "figmaToken": "app/primary",
+      "systemToken": "--app-primary",
+      "status": "approved",
+      "type": "COLOR"
+    },
+    {
+      "figmaToken": "app/primary",
+      "systemToken": "--app-primary",
+      "status": "suggested",
+      "notes": "duplicate suggestion must not approve itself"
+    }
+  ]
+}
