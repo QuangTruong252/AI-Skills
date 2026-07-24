@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontend Structure Audit"
+  short_description: "Review Angular HTML and SCSS structure"
+  default_prompt: "Use $auditing-frontend-structure to review this Angular template and SCSS and return findings only."
