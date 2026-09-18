@@ -81,13 +81,11 @@ canonical policy:
 
 ## Result model
 
-A bounded frontend stage, migration stage, or behavior stage may be complete
-while the repository task still requires another workflow or developer action.
-The template therefore separates:
-
-- `workflow_scope_result`: evidence for the assigned feature-change boundary;
-- `recommended_task_state`: the state suggested to `daily-dev`;
-- `return_to: daily-dev`: ownership always returns to the orchestrator.
+Every stage returns the canonical `workflow_result` envelope defined by
+`daily-dev`. Workflow-specific feature evidence is nested under
+`scope_completed`, `validation`, and `open_items`; ownership always returns with
+`return_to: daily-dev`. A completed feature scope does not complete the whole
+repository task.
 
 ## Validation
 

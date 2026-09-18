@@ -1,217 +1,106 @@
 ---
 name: daily-dev
-description: Use when repository-aware development, debugging, review, design, implementation, maintenance, continuation, or handoff must be triaged and routed through the correct workflow.
+description: Use when a request depends on repository files, configuration, behavior, runtime evidence, implementation, review, continuation, or handoff.
 ---
 
 # Daily Dev
 
-## Role
+## Purpose
 
-`daily-dev` is the mandatory thin orchestrator for repository-related work. It
-classifies the task, resolves requirement ambiguity, coordinates primary and
-secondary workflows, tracks risk, and completes the task through canonical
-quality gates.
+`daily-dev` is the thin orchestrator for repository-related work. It owns the
+whole task, while routed workflows own only bounded specialist work.
 
-It MUST NOT redefine policy owned by:
+Canonical policy remains in:
 
-- [`AGENTS.md`](../../../AGENTS.md): routing and precedence.
-- [`core.md`](../../rules/core.md): scope, reuse, approval gates, conflicts, and
-  repository safety.
-- [`quality-gates.md`](../../rules/quality-gates.md): testing, validation,
-  retries, completion evidence, and final reporting.
+- [`AGENTS.md`](../../../AGENTS.md): bootstrap, precedence, required reading,
+  routing, and delegation.
+- [`core.md`](../../rules/core.md): scope, reuse, clarification, approval gates,
+  conflicts, and repository safety.
+- [`quality-gates.md`](../../rules/quality-gates.md): validation, retries,
+  completion evidence, and final reporting.
 
-## Activation
+Do not restate or weaken those policies here.
 
-Use this skill for every repository-related task except a standalone explanation
-that requires no repository context.
+## Activation boundary
 
-Activate it when a repository change may be required, for repository review or
-debugging, feature or refactor design, Figma-to-code work, continuation or
-handoff, or when repository scope is unclear.
+Activate for repository-aware implementation, debugging, review, design,
+maintenance, continuation, or handoff. Skip only a standalone explanation that
+needs no repository file, configuration, or runtime behavior.
 
-Skip it for general knowledge, translation, rewriting, or standalone
-explanations with no repository files or behavior. When uncertain, activate it
-if the request names an actual repository, file, component, bug, feature,
-configuration, implementation, or runtime behavior.
+## Preflight
 
-## State machine
+Complete the bootstrap contract in `AGENTS.md` before task work:
 
 ```text
-INTAKE
-→ ACTIVATION CHECK
-→ LOAD CANONICAL RULES
-→ MINIMAL TRIAGE
-→ CLARIFICATION GATE
-→ PRELIMINARY RISK CHECK
-→ ROUTE
-→ TASK WORKFLOW
-→ CORE APPROVAL GATE WHEN RISK IS CONFIRMED
-→ IMPLEMENT OR REVIEW
-→ QUALITY GATES
-→ REPORT
-→ REMOVE OR PRESERVE TASK ARTIFACT
+read AGENTS.md
+-> classify observable task scope
+-> select preliminary ordered route
+-> build preflight receipt for that route
+-> read exact mandatory sources
+-> verify sources_loaded
+-> confirm route
 ```
 
-Exit states are `COMPLETED`, `WAITING_FOR_CLARIFICATION`, `APPROVAL_REQUIRED`,
-`BLOCKED`, and `HANDOFF_REQUIRED`.
+Do not edit, delegate, run implementation checks, or silently substitute policy
+while `missing_sources` is non-empty. A missing or unusable mandatory source
+sets `clarification-required` and requires a developer decision.
 
-## Required reading
+Keep the receipt internal unless it explains a clarification, approval,
+blocker, handoff, or route decision.
 
-Before routing:
+## Execution model
 
-1. Read `AGENTS.md`, `core.md`, and `quality-gates.md`.
-2. Read only applicable domain rules and project references routed by
-   `AGENTS.md` for the classified task. Apply inventory validity before trusting
-   reference snapshots.
-3. Inspect relevant objective configuration: installed versions, actual scripts,
-   compiler or workspace configuration, schemas, and runtime constraints.
-4. Inspect directly affected files and the nearest caller, consumer, or public
-   surface.
-5. Load a specialized skill only after this orchestrator routes to it.
-
-## Minimal triage
-
-Minimal triage is mandatory and bounded:
+Use this sequence:
 
 ```text
-READ ROUTER
-→ INSPECT RELEVANT CONFIGURATION
-→ INSPECT DIRECTLY AFFECTED FLOW
-→ CLASSIFY TASK
-→ DETECT RISK FLAGS
-→ ROUTE
+PREFLIGHT
+-> ROUTE
+-> BOUNDED DISCOVERY
+-> CLARIFICATION OR APPROVAL GATE WHEN REQUIRED
+-> PRIMARY WORK
+-> OPTIONAL BOUNDED SECONDARY WORK
+-> RESULT VALIDATION
+-> TASK-LEVEL VALIDATION
+-> REPORT
 ```
 
-```yaml
-triage:
-  task_type: bugfix | feature-change | figma-to-ui | code-review | auditing-frontend-structure | repository-maintenance
-  evidence: []
-  risk_flags: []
-  route_to: <primary workflow>
-  approval_required: false
-  reason: <evidence-based reason>
-```
+Routing is owned exclusively by the ordered table in `AGENTS.md`. Do not create
+a second route table in this skill and do not classify from a prompt keyword
+when observable behavior indicates another route.
 
-During minimal triage, MUST NOT edit code, deep-debug, design the full solution,
-create a long plan or artifact, run build or tests, or request approval before a
-concrete risk is identified.
+For repository instruction, rule, skill, validator, documentation, or
+configuration maintenance, execute the smallest coherent change directly under
+`daily-dev`. Do not invent a catch-all maintenance workflow.
 
-Show triage only for ambiguity, risk, approval, shared-consumer impact, route
-changes, or a required developer decision:
+## Ownership
 
-```markdown
-## Triage
+`daily-dev` alone may:
 
-- Task type:
-- Route:
-- Risk:
-- Affected scope:
-- Decision required:
-```
+- choose or change the route;
+- expand delegated scope;
+- aggregate workflow results and validation evidence;
+- decide whether evidence became stale after later changes;
+- mark the whole task `completed`.
 
-## Clarification gate
+A specialized workflow may complete only its delegated scope. It MUST return
+its result to `daily-dev` and MUST NOT invoke another workflow.
 
-Any unresolved ambiguity affecting implementation, behavior, scope, contract,
-acceptance criteria, or source of truth requires a stop.
+Parallel agents are optional. Use them only for independent, bounded work that
+helps within the current session. Send the exact `scope_packet` defined by
+`AGENTS.md`; copied rule summaries are not a substitute for source paths. A
+subagent must independently read `AGENTS.md` and every mandatory source in the
+packet, then report those paths in `sources_loaded`.
 
-The agent MUST collect all currently known ambiguities, ask them in one batch,
-explain why each matters, and wait until all are answered. After a partial
-response, show only unanswered questions and remain
-`WAITING_FOR_CLARIFICATION`.
-
-The agent MUST NOT route, implement, or substitute a recommended option while
-clarification remains incomplete.
-
-## Primary workflow selection
-
-Choose the primary workflow from the developer's dominant outcome and acceptance
-source, not from the first keyword in the prompt.
-
-| Dominant outcome | Primary workflow |
-| --- | --- |
-| Existing behavior is incorrect or broken | `bugfix` |
-| New or changed behavior is required | `feature-change` |
-| Figma is the main acceptance source | `figma-to-ui` |
-| Evaluation without implementation | `code-review` |
-| Template/SCSS structure audit without implementation | `auditing-frontend-structure` |
-| Internal repository docs, rules, skills, or configuration maintenance | `daily-dev` |
-
-For `repository-maintenance`, `daily-dev` executes the generic workflow itself.
-It MUST NOT use that workflow to bypass an applicable specialized skill.
-
-## Primary and secondary ownership
-
-A task has exactly one `primary_skill`, normally zero or one `secondary_skills`,
-and at most two secondary workflows.
-
-```yaml
-routing:
-  primary_skill: bugfix
-  secondary_skills:
-    - figma-to-ui
-  ownership_reason: runtime failure is the primary outcome
-  secondary_scope: implement the affected visual contract
-```
-
-`daily-dev` retains whole-task ownership. The primary workflow owns the main
-objective, acceptance criteria, integration, and completion. A secondary
-workflow owns only its delegated specialist scope.
-
-Only `daily-dev` may alter routing. A secondary workflow MUST NOT invoke another
-workflow or declare the whole task complete.
-
-### Frontend structure audit routing
-
-Route `auditing-frontend-structure` as primary when the dominant requested
-outcome is a report-only template/SCSS structure audit.
-
-Route it as a secondary workflow when a frontend implementation workflow has
-produced or changed templates/SCSS and structure, reuse, wrapper weight, or
-dead/duplicated styles are in question before completion. Typical primaries:
-
-- `figma-to-ui`
-- `feature-change` with material template/SCSS edits
-
-The audit secondary is report-only: it MUST NOT edit source, MUST return
-findings to the primary via `daily-dev`, and MUST NOT declare the whole task
-complete. Persist the audit report only when
-`working-docs/active-task.md` already exists for the task or the developer
-explicitly requests persistence.
-
-### Secondary execution boundary
-
-A secondary workflow MAY analyze and directly implement only within:
-
-```yaml
-secondary_scope:
-  workflow: figma-to-ui
-  objective: <bounded specialist outcome>
-  allowed_files: []
-  excluded_scope: []
-  return_to: <primary workflow>
-```
-
-It MUST return:
-
-```yaml
-secondary_result:
-  workflow: figma-to-ui
-  status: completed | approval-required | blocked
-  files_changed: []
-  behavior_changed: []
-  validation: []
-  discovered_risks: []
-  scope_deviations: []
-  return_to: <primary workflow>
-```
+Before starting any optional secondary, extend and re-verify the preflight
+receipt for that secondary's mandatory sources.
 
 ## Route changes
 
-Change the primary workflow only when new evidence proves the original
-classification wrong. Preserve valid discovery, approved scope, completed work,
-and validation evidence.
+Change a route only when new evidence disproves the current classification.
+Preserve valid discovery and current validation evidence, then reevaluate
+scope, acceptance criteria, mandatory reading, and risk.
 
-Always show:
+Make the change visible when it affects developer expectations:
 
 ```markdown
 ## Triage updated
@@ -223,95 +112,133 @@ Always show:
 - Risk impact:
 ```
 
-The route change itself needs no approval unless it expands scope, changes
-acceptance criteria, or triggers a core approval gate.
+A route change does not itself authorize expanded scope or bypass a
+clarification or approval gate.
 
-## Risk investigation and approval
+## Canonical statuses
 
-Risk has two states:
+Use only these lower-case statuses:
+
+| Status | Meaning |
+| --- | --- |
+| `in-progress` | Bounded work is active and no stop condition is open. |
+| `completed` | The reported workflow scope is complete with current required evidence. |
+| `clarification-required` | A missing source or unresolved decision affects scope, behavior, contract, or acceptance. |
+| `approval-required` | A confirmed change requires the canonical approval gate. |
+| `blocked` | Progress cannot continue with available evidence or permitted actions. |
+| `handoff-required` | Work must cross a session, model, or developer boundary. |
+
+No synonym, upper-case legacy state, or workflow-specific status is valid.
+
+## Canonical workflow result
+
+Every primary or secondary workflow returns this exact top-level envelope:
 
 ```yaml
-risk:
-  status: preliminary | confirmed
+workflow_result:
+  workflow: <workflow-name>
+  role: primary | secondary
+  status: in-progress | completed | clarification-required | approval-required | blocked | handoff-required
+  sources_loaded: []
+  scope_completed: []
+  files_changed: []
+  validation: []
+  open_items: []
+  return_to: daily-dev
 ```
 
-A preliminary risk may receive bounded, read-only investigation: inspect
-implementation, consumers, references, contracts, configuration, and focused
-diagnostic output. It MUST NOT edit files or begin speculative refactoring.
+Rules for the envelope:
 
-```yaml
-risk_investigation:
-  suspected_risk: <risk>
-  evidence_inspected: []
-  result: confirmed | disproved | inconclusive
-  impact:
-    files: []
-    consumers: []
-    contracts: []
-  next_action: continue | request-approval | blocked
-```
+- `sources_loaded` contains exact paths actually read, including `AGENTS.md`.
+- `scope_completed` describes only the workflow's bounded scope.
+- `files_changed` is empty for report-only work.
+- `validation` records the command or observation, outcome, and relevant scope.
+- `open_items` carries unresolved decisions, approvals, blockers, deviations,
+  or handoff notes.
+- `return_to` is always `daily-dev`, including a primary workflow result.
 
-- `disproved`: continue the routed workflow.
-- `confirmed`: return to `daily-dev`, complete impact analysis, apply the
-  canonical approval gate in `core.md`, and stop.
-- `inconclusive`: stop as `BLOCKED`; uncertainty is not approval.
+Workflow-specific detail may be nested inside one of these fields. It MUST NOT
+replace, rename, or add an alternative top-level result contract.
 
-After approval, the agent MAY make reasonable related changes without approval
-per file when they are necessary for the approved objective, preserve acceptance
-criteria, and add no behavior, risk category, public surface, or unrelated
-consumer impact beyond the approved proposal. Anything beyond those limits
-requires a new approval decision.
+On receipt, verify every required key, allowed status, source path, delegated
+boundary, and return owner. If the result is invalid, return it for correction.
+Do not infer omitted fields, translate a legacy status, or mark the workflow
+complete on its behalf.
 
-## Generic repository workflow
+## Clarification, risk, and approval
 
-```text
-INTAKE
-→ LOAD CANONICAL RULES
-→ MINIMAL TRIAGE
-→ CLARIFICATION GATE
-→ PRELIMINARY RISK CHECK
-→ PLAN CHANGE
-→ CORE APPROVAL GATE IF REQUIRED
-→ IMPLEMENT
-→ QUALITY GATES
-→ REPORT
-```
+Apply the canonical gates in `core.md`.
+
+- Aggregate all currently known clarification questions into one request.
+- A partial answer keeps the task `clarification-required`; ask only the
+  remaining questions.
+- Preliminary risk permits bounded read-only investigation only.
+- Confirmed risk returns to `daily-dev` for impact analysis and approval.
+- Inconclusive risk is `blocked`, not implicit approval.
+
+After approval, related edits are allowed only when necessary for the approved
+objective and when they add no new behavior, risk category, public surface, or
+unrelated consumer impact.
 
 ## Task artifact
 
-Create `working-docs/active-task.md` only when primary and secondary workflows
-are both used, approval is pending, a blocker or handoff exists, work must
-survive a session or model boundary, significant completed work must be
-preserved, or the developer explicitly requests persistence.
+Default: no artifact. Keep state in the current session.
 
-Use `templates/active-task.md`. Update it only for meaningful transitions:
-route changes, completed workflows, confirmed risks, approvals, blockers,
-handoffs, or session boundaries.
+Create a task artifact only when at least one condition is true:
 
-On completion, delete the artifact by default. Preserve it only when the
-developer explicitly requests retention for handoff, audit, documentation, or
-another stated purpose. Do not archive it automatically.
+- clarification or approval is pending;
+- a blocker or handoff exists;
+- work must cross a session or model boundary;
+- primary and secondary work cannot be safely reconstructed from current
+  context;
+- the developer explicitly requests persistence.
 
-## Validation coordination
+Use:
 
-Validation policy belongs exclusively to `quality-gates.md`.
+```text
+working-docs/active-task-YYYYMMDD-HHMM-<slug>.md
+```
 
-- Secondary workflows provide current local evidence.
-- The primary workflow verifies main acceptance criteria and integration.
-- `daily-dev` aggregates evidence, invalidates results made stale by later
-  changes, and runs only required task-level checks still missing.
-- Do not rerun a check when valid current evidence covers the final scope.
+Create it from `templates/active-task.md`. Assign a unique Task ID and Created
+timestamp. The Task ID MUST include second-level time plus a unique suffix; it
+MUST NOT be derived from the minute-level path alone. Before creation, check
+whether the target path exists. Never overwrite it: append `-02`, `-03`, and so
+on to the slug until the path is unused. Before updating or deleting an
+artifact, verify that its Task ID and path belong to the current task. Never use
+the legacy singleton `working-docs/active-task.md`.
 
-A task cannot be `COMPLETED` while required evidence is missing, acceptance
-criteria are unverified, a secondary workflow has not returned ownership, or
-clarification, approval, or blockers remain open.
+Update only at meaningful transitions: route change, completed workflow,
+confirmed risk, approval, blocker, handoff, or session boundary. Remove the
+verified task artifact after completion unless the developer requests
+retention. Never archive it automatically.
 
-## Repository safety and completion
+When the developer requests a persisted specialist report, `daily-dev` writes
+the returned content to:
 
-The agent MUST NOT execute Git write operations. The developer owns staging,
-commits, branches, pushes, merges, rebases, tags, and pull-request creation.
-Read-only Git inspection is allowed under `AGENTS.md` and `core.md`.
+```text
+working-docs/reports/YYYY-MM-DD-HHMMSS-<task-id>-<report-kind>.md
+```
 
-Use the final-report structure from `quality-gates.md`. Report related scope
-expansion and why it remained inside the approved objective. Remove
-`working-docs/active-task.md` unless explicit retention was requested.
+Verify that the Task ID matches the active artifact and that the report path is
+unused before writing, then link it from that artifact. A report-only workflow
+never writes or links the file itself.
+
+## Validation and completion
+
+Validation policy belongs to `quality-gates.md`.
+
+- Reuse current evidence that still covers final scope.
+- Invalidate evidence made stale by later changes.
+- Run only required checks still missing.
+- Treat static pack validators as structural evidence, not proof that a model
+  follows the skill.
+- Record GPT/Gemini behavioral trials separately. If no fresh trial was run,
+  report behavioral evidence as `NOT RUN`, never as passed.
+
+The whole task cannot be `completed` while a mandatory source is missing, a
+clarification, approval, blocker, or handoff remains open, a delegated workflow
+has not returned a valid result, acceptance criteria are unverified, or required
+evidence is missing.
+
+Use the final-report structure from `quality-gates.md`. Follow the Git ownership
+invariant in `AGENTS.md`.

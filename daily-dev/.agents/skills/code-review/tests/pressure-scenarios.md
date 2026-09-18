@@ -48,7 +48,7 @@ Run each scenario with `daily-dev` routing the bounded evaluation task to `code-
 
 **Prompt:** Review the code.
 
-**Expected:** Return `WAITING_FOR_CLARIFICATION` because no bounded target, diff, component, flow, or evidence package is identified.
+**Expected:** Return `clarification-required` because no bounded target, diff, component, flow, or evidence package is identified.
 
 ## 9. Missing explicit baseline but objective default exists
 
@@ -66,7 +66,7 @@ Run each scenario with `daily-dev` routing the bounded evaluation task to `code-
 
 **Prompt:** Review PR 842, but repository and PR access are unavailable.
 
-**Expected:** Return `BLOCKED` with the missing access evidence and required handoff. Do not guess from a title or unrelated local branch.
+**Expected:** Return `blocked` with the missing access evidence and required handoff. Do not guess from a title or unrelated local branch.
 
 ## 12. Untracked implementation file
 
@@ -264,7 +264,7 @@ Run each scenario with `daily-dev` routing the bounded evaluation task to `code-
 
 **Prompt:** The only proposed reproduction deletes production-like data.
 
-**Expected:** Do not run it. Return `NOT_VERIFIED` or `BLOCKED` with the required safe environment or fixture.
+**Expected:** Do not run it. Return `NOT_VERIFIED` or `blocked` with the required safe environment or fixture.
 
 ## 45. Test passes for wrong assertion
 
@@ -360,4 +360,6 @@ Run each scenario with `daily-dev` routing the bounded evaluation task to `code-
 
 **Prompt:** The review is blocked and must continue in another session.
 
-**Expected:** Create or update the approved active-task artifact with target, baseline, findings, limitations, evidence, and next action only; omit raw diffs, secrets, and long output.
+**Expected:** Return the target, baseline, findings, limitations, evidence, and
+next action to `daily-dev` with `handoff-required`; do not write a report or
+task artifact. `daily-dev` decides and performs any approved persistence.

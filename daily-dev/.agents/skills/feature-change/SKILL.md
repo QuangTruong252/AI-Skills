@@ -77,7 +77,7 @@ Before implementation, establish:
 - resolution of every applicable canonical gate.
 
 Missing context does not block bounded discovery when repository evidence can
-resolve it. Return `WAITING_FOR_CLARIFICATION` before design or implementation
+resolve it. Return `clarification-required` before design or implementation
 when missing information affects behavior, contract, acceptance, compatibility,
 role semantics, source of truth, or implementation scope.
 
@@ -89,7 +89,7 @@ INTAKE FROM DAILY-DEV
 → BOUNDED DISCOVERY
 → REQUIREMENT, ACCEPTANCE, AND SOURCE CHECK
     ↳ ambiguity or conflict
-      → RETURN WAITING_FOR_CLARIFICATION
+      → RETURN clarification-required
     ↳ new evidence
       → UPDATE INTAKE
 → MAP ACCEPTANCE CRITERIA
@@ -173,7 +173,7 @@ When ambiguity affects behavior, contract, acceptance, compatibility, or scope:
 
 Apply repository precedence before declaring a source conflict. When two
 apparently authoritative sources remain inconsistent, record the exact behavior
-difference and return `WAITING_FOR_CLARIFICATION`. Existing tests and
+difference and return `clarification-required`. Existing tests and
 implementation are evidence, not automatic product authority.
 
 When a developer instruction conflicts with a current authoritative source,
@@ -452,7 +452,7 @@ system-boundary risk.
 
 Known unavailable validation may allow implementation when design safety is
 already established. Record the dependency before implementation, run the
-strongest available checks, and return `HANDOFF_REQUIRED` with exact steps and
+strongest available checks, and return `handoff-required` with exact steps and
 expected evidence. If target evidence is required to choose a safe design, stop
 before implementation.
 
@@ -463,22 +463,24 @@ not a remaining risk and is never treated as `PASS`.
 ## Result and return
 
 Use [`templates/feature-change-result.md`](templates/feature-change-result.md).
-The workflow reports its bounded result separately from its recommendation for
-the whole task:
+Return the canonical envelope defined by `daily-dev`:
 
 ```yaml
-feature_change_result:
-  workflow_scope_result:
-    status: completed | approval-required | blocked | handoff-required
-  recommended_task_state:
-    status: COMPLETED | WAITING_FOR_CLARIFICATION | APPROVAL_REQUIRED | BLOCKED | HANDOFF_REQUIRED
+workflow_result:
+  workflow: feature-change
+  role: primary | secondary
+  status: in-progress | completed | clarification-required | approval-required | blocked | handoff-required
+  sources_loaded: []
+  scope_completed: []
+  files_changed: []
+  validation: []
+  open_items: []
   return_to: daily-dev
 ```
 
-`workflow_scope_result: completed` means only the assigned `feature-change`
-scope is verified. It does not close the repository task while secondary
-workflows, approvals, handoffs, blockers, or required acceptance remain.
-daily-dev owns the final task exit state and repository report.
+Nest workflow-specific evidence under the canonical fields; do not emit a
+separate recommended task state. `completed` verifies only the assigned
+`feature-change` scope. `daily-dev` owns the final task status and report.
 
 ## Repository safety
 

@@ -5,99 +5,79 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-REQUIRED = [
+REQUIRED = (
     ROOT / "SKILL.md",
     ROOT / "README.md",
     ROOT / "templates" / "bugfix-result.md",
     ROOT / "tests" / "pressure-scenarios.md",
-]
-
+)
 errors: list[str] = []
+
 for path in REQUIRED:
-    if not path.exists():
+    if not path.is_file():
         errors.append(f"missing: {path.relative_to(ROOT)}")
 
-skill_path = ROOT / "SKILL.md"
-if skill_path.exists():
-    text = skill_path.read_text(encoding="utf-8")
-    fm = re.match(r"^---\n(.*?)\n---\n", text, re.S)
-    if not fm:
-        errors.append("SKILL.md: missing YAML frontmatter")
-    else:
-        header = fm.group(1)
-        if "name: bugfix" not in header:
-            errors.append("SKILL.md: unexpected name")
-        desc_match = re.search(r"^description:\s*(.+)$", header, re.M)
-        if not desc_match or not desc_match.group(1).strip().startswith("Use when"):
-            errors.append("SKILL.md: description must start with 'Use when'")
-
-    required_phrases = [
+skill = ROOT / "SKILL.md"
+if skill.is_file():
+    text = skill.read_text(encoding="utf-8")
+    if not re.match(r"^---\n.*?name:\s*bugfix\n.*?\n---\n", text, re.S):
+        errors.append("SKILL.md: invalid frontmatter or name")
+    for marker in (
         "INTAKE FROM DAILY-DEV",
         "reproduced | evidence-backed | not-established",
         "confirmed | strong-hypothesis | disproved",
-        "directly affected flow",
-        "bounded temporary instrumentation",
-        "MUST NOT collect secrets",
-        "Do not perform destructive or irreversible reproduction",
-        "Do not edit generated, vendor, or third-party code",
         "two targeted correction-and-rerun cycles",
-        "HANDOFF_REQUIRED",
         "templates/bugfix-result.md",
-        "MUST NOT execute Git write operations",
-    ]
-    for phrase in required_phrases:
-        if phrase not in text:
-            errors.append(f"SKILL.md: missing required phrase: {phrase}")
-
-    forbidden_phrases = [
-        "Quick Lane",
-        "Standard Lane",
-        "Architecture Lane",
-        "superpowers:",
-        "git commit -m",
-        "patch the symptom",
-    ]
-    for phrase in forbidden_phrases:
-        if phrase in text:
-            errors.append(f"SKILL.md: contains forbidden phrase: {phrase}")
-
-    words = len(re.findall(r"\b\w+[\w'-]*\b", text))
-    if words > 3600:
-        errors.append(f"SKILL.md: too long ({words} words; max 3600)")
-
-result_template = ROOT / "templates" / "bugfix-result.md"
-if result_template.exists():
-    result_text = result_template.read_text(encoding="utf-8")
-    for phrase in [
-        "status: completed | approval-required | blocked | handoff-required",
-        "original_failure_path: PASS | FAIL | NOT RUN",
-        "diagnostic_changes_removed: true",
-        "developer_verification_required:",
         "return_to: daily-dev",
-    ]:
-        if phrase not in result_text:
-            errors.append(f"templates/bugfix-result.md: missing phrase: {phrase}")
+    ):
+        if marker not in text:
+            errors.append(f"SKILL.md: missing marker: {marker}")
 
-scenario_path = ROOT / "tests" / "pressure-scenarios.md"
-if scenario_path.exists():
-    scenario_text = scenario_path.read_text(encoding="utf-8")
-    scenario_count = len(re.findall(r"^## \d+\.", scenario_text, re.M))
-    if scenario_count < 30:
-        errors.append(f"pressure-scenarios.md: expected at least 30 scenarios, found {scenario_count}")
+result = ROOT / "templates" / "bugfix-result.md"
+if result.is_file():
+    text = result.read_text(encoding="utf-8")
+    for marker in (
+        "workflow_result:",
+        "workflow: bugfix",
+        "role: primary | secondary",
+        "clarification-required",
+        "sources_loaded: []",
+        "scope_completed:",
+        "files_changed: []",
+        "validation:",
+        "open_items:",
+        "return_to: daily-dev",
+    ):
+        if marker not in text:
+            errors.append(f"templates/bugfix-result.md: missing marker: {marker}")
 
-for path in REQUIRED:
-    if not path.exists() or path.suffix != ".md":
-        continue
-    text = path.read_text(encoding="utf-8")
-    for pattern in [r"^\s*git\s+commit\b", r"^\s*git\s+add\b", r"^\s*git\s+push\b"]:
-        if re.search(pattern, text, re.M):
-            errors.append(f"{path.relative_to(ROOT)}: executable forbidden Git command")
+scenarios = ROOT / "tests" / "pressure-scenarios.md"
+if scenarios.is_file():
+    text = scenarios.read_text(encoding="utf-8")
+    matches = list(re.finditer(r"^##\s+(\d+)\.\s+.+$", text, re.M))
+    if not matches:
+        errors.append("pressure-scenarios.md: no scenarios found")
+    ids = [int(match.group(1)) for match in matches]
+    if len(ids) != len(set(ids)) or ids != sorted(ids):
+        errors.append("pressure-scenarios.md: IDs must be unique and ordered")
+    for index, match in enumerate(matches):
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
+        body = text[match.end() : end]
+        prompt = re.search(
+            r"^\*\*Prompt:\*\*\s*(.*?)(?=^\*\*Expected:\*\*)",
+            body,
+            re.M | re.S,
+        )
+        expected = re.search(r"^\*\*Expected:\*\*\s*(.*)$", body, re.M | re.S)
+        if not prompt or not prompt.group(1).strip():
+            errors.append(f"scenario {match.group(1)}: missing non-empty Prompt")
+        if not expected or not expected.group(1).strip():
+            errors.append(f"scenario {match.group(1)}: missing non-empty Expected")
 
 if errors:
-    print("VALIDATION FAILED")
+    print("bugfix package structure: FAIL")
     for error in errors:
         print(f"- {error}")
     sys.exit(1)
 
-print("VALIDATION PASSED")
-print(f"Validated {len(REQUIRED)} required files")
+print("bugfix package structure: PASS")

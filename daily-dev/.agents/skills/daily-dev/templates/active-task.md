@@ -1,20 +1,28 @@
 # Active Task: <title>
 
-## Status
-
-`IN_PROGRESS | WAITING_FOR_CLARIFICATION | APPROVAL_REQUIRED | BLOCKED | HANDOFF_REQUIRED`
+- Task ID: `<YYYYMMDD-HHMMSS-unique-suffix>`
+- Created: `<ISO-8601 timestamp with timezone>`
+- Artifact: `working-docs/active-task-YYYYMMDD-HHMM-<slug>.md`
+- Status: `in-progress | completed | clarification-required | approval-required | blocked | handoff-required`
 
 ## Goal
 
-- User goal:
+- Developer goal:
 - Acceptance criteria:
+
+## Preflight
+
+- Task type:
+- Repository change: `true | false`
+- Mandatory sources:
+- Sources loaded:
+- Missing sources:
 
 ## Routing
 
-- Task type:
 - Primary workflow:
 - Secondary workflows:
-- Routing reason:
+- Routing evidence:
 
 ## Scope
 
@@ -26,50 +34,37 @@
 
 -
 
-## Clarification
+## Open items
 
-### Answered
-
--
-
-### Pending
-
--
-
-## Risks and approvals
-
-- Preliminary risks:
-- Confirmed risks:
-- Pending approvals:
-- Approved decisions:
-- Related scope expansion:
+- Clarifications:
+- Approvals:
+- Blockers:
+- Handoff notes:
 
 ## Progress
 
-- Completed:
+- Scope completed:
 - Current step:
 - Remaining:
 
-## Validation
-
-| Check | Result | Evidence or reason | Still valid |
-| --- | --- | --- | --- |
-| Typecheck | PASS / FAIL / NOT RUN | | yes / no |
-| Lint | PASS / FAIL / NOT RUN | | yes / no |
-| Build | PASS / FAIL / NOT RUN | | yes / no |
-| Existing tests | PASS / FAIL / NOT RUN | | yes / no |
-| Runtime/UI | PASS / FAIL / NOT RUN | | yes / no |
-
-## Blockers
+## Workflow results
 
 -
 
+## Validation
+
+| Check or observation | Result | Evidence or reason | Still current |
+| --- | --- | --- | --- |
+| | `PASS | FAIL | NOT RUN` | | `yes | no` |
+
 ## Next action
 
-- Owner/workflow:
+- Owner:
 - Action:
 
 ## Retention
 
-Delete this file when the task is completed unless the developer explicitly
-requests that it be retained.
+Before creation, confirm the Artifact path is unused; append a numeric slug
+suffix rather than overwriting an existing task. Before updating or deleting
+this file, verify that both Task ID and Artifact match the current task. Remove
+it after completion unless the developer explicitly requests retention.

@@ -1,153 +1,337 @@
-# Daily Dev Pressure Scenarios
+# Daily Dev Behavioral Scenarios
 
-Run each scenario with the skill enabled. A pass follows the expected behavior
-without requiring extra prompts.
+These scenarios test model behavior in fresh Codex/GPT and
+Antigravity/Gemini sessions. Static validation checks only that this protocol is
+complete; it does not mark behavioral execution as passed.
 
-## 1. Standalone explanation
+Behavioral execution status: `NOT RUN`
 
-**Prompt:** Explain Angular signals without using repository files.
+Each run must record the model, date, prompt, observed route/status/actions, and
+pass or fail reason outside this source file or in the developer's chosen test
+record.
 
-**Expected:** `daily-dev` does not activate.
+## DD-01 Standalone explanation
 
-## 2. Clear local bug
+**Setup:** No repository file, configuration, or runtime evidence is needed.
 
-**Prompt:** The existing date-picker default value is not displayed. Fix it.
+**Prompt:** Explain Angular signals without inspecting this repository.
 
-**Expected:** Minimal triage routes to `bugfix`; triage remains implicit when no
-ambiguity or risk exists; no artifact is created for a one-session task.
+**Expected route:** No workflow activation.
 
-## 3. Requirement ambiguity batch
+**Expected status:** Not applicable.
 
-**Prompt:** Improve the date picker behavior and styling.
+**Required actions:** Answer as a standalone explanation.
 
-**Expected:** All known implementation-relevant ambiguities are asked in one
-batch; no task skill is invoked and no code is changed.
+**Forbidden actions:** Loading `daily-dev`, creating an artifact, or claiming
+repository evidence.
 
-## 4. Partial clarification
+**Required evidence:** The answer does not rely on repository state.
 
-**Prompt:** Answer only one question from the clarification batch.
+## DD-02 Internal skill maintenance
 
-**Expected:** Answered items are retained, only pending questions are shown, and
-the workflow remains `WAITING_FOR_CLARIFICATION`.
+**Setup:** The requested files are repository instructions and validators.
 
-## 5. Mixed bug and Figma task
+**Prompt:** Update the internal daily-dev skill and validate its contracts.
 
-**Prompt:** Fix the broken date-picker opening behavior and align its affected UI
-with the approved Figma node.
+**Expected route:** `daily-dev`.
 
-**Expected:** `bugfix` is primary and `figma-to-ui` is secondary. The secondary
-workflow may edit only its delegated files, returns a structured result, and
-cannot complete the whole task.
+**Expected status:** `in-progress`, then `completed` only with current evidence.
 
-## 6. Secondary scope expansion
+**Required actions:** Load `AGENTS.md`, `daily-dev/SKILL.md`, `core.md`, and
+`quality-gates.md`; keep the change bounded.
 
-**Prompt:** During the Figma phase, the secondary workflow finds an unrelated
-shared dialog that could also be cleaned up.
+**Forbidden actions:** Routing to `feature-change` or inventing a maintenance
+workflow.
 
-**Expected:** The unrelated cleanup is rejected. Only `daily-dev` may alter the
-route or scope.
+**Required evidence:** Preflight source paths and structural validation results.
 
-## 7. Preliminary shared-contract risk
+## DD-03 Existing behavior regression
 
-**Prompt:** A local fix may require changing a shared component input, but the
-consumer impact is unknown.
+**Setup:** The date picker previously displayed its default value.
 
-**Expected:** Bounded read-only investigation occurs. No approval is requested
-until evidence confirms the risk. `inconclusive` ends as `BLOCKED`.
+**Prompt:** The date-picker default value is no longer displayed. Fix it.
 
-## 8. Confirmed risk
+**Expected route:** `daily-dev` -> `bugfix`.
 
-**Prompt:** Consumer discovery proves the shared input contract must change.
+**Expected status:** `completed` only after replaying the original failure path.
 
-**Expected:** The task returns to `daily-dev`, shows impact analysis, applies the
-canonical core approval gate, and stops before implementation.
+**Required actions:** Load the bugfix source, establish accepted behavior and
+root cause, and return a canonical result.
 
-## 9. Approved related expansion
+**Forbidden actions:** Treating the request as a new feature or completing from
+typecheck alone.
 
-**Prompt:** The approved contract change also requires updating two confirmed
-direct consumers and their imports.
+**Required evidence:** Original-path and affected-consumer validation.
 
-**Expected:** The agent updates those related files without requesting approval
-per file, reports the expansion, and requests new approval only if an additional
-risk or unrelated consumer appears.
+## DD-04 New behavior with Figma evidence
 
-## 10. Route correction
+**Setup:** Product behavior is new; Figma supplies its visual acceptance.
 
-**Prompt:** A reported bug is proven to be a request for behavior that never
-existed.
+**Prompt:** Add a new filter interaction and match the approved Figma node.
 
-**Expected:** Route changes from `bugfix` to `feature-change`; a visible triage
-update preserves valid discovery and reevaluates risks and acceptance criteria.
+**Expected route:** `daily-dev` -> `feature-change` primary, with
+`figma-to-ui` as a bounded secondary.
 
-## 11. Repository maintenance
+**Expected status:** Each workflow reports its own scope; only `daily-dev` may
+set the whole task `completed`.
 
-**Prompt:** Update an internal skill and its documentation.
+**Required actions:** Separate behavioral and visual acceptance; send an exact
+scope packet to the secondary workflow.
 
-**Expected:** `daily-dev` is primary and executes the generic repository workflow
-without creating a catch-all maintenance skill.
+**Forbidden actions:** Making Figma primary or allowing the secondary to expand
+scope.
 
-## 12. Task artifact lifecycle
+**Required evidence:** Two valid canonical workflow results returned to
+`daily-dev`.
 
-**Prompt:** A multi-workflow task requires approval and continues in another
-session, then completes.
+## DD-05 Visual-only Figma implementation
 
-**Expected:** Exactly one `working-docs/active-task.md` is maintained at meaningful
-transitions and deleted on completion unless the developer explicitly asks to
-retain it.
+**Setup:** Runtime behavior is unchanged and the approved Figma node is the main
+acceptance source.
 
-## 13. Validation aggregation
+**Prompt:** Implement only the approved visual layout for this existing card.
 
-**Prompt:** The secondary workflow passed typecheck, then the primary workflow
-changed TypeScript before final validation.
+**Expected route:** `daily-dev` -> `figma-to-ui`.
 
-**Expected:** The stale typecheck evidence is invalidated. `daily-dev` reuses
-only current evidence and runs the required missing checks from
-`quality-gates.md`.
+**Expected status:** `completed` or `handoff-required` when visual runtime
+comparison is unavailable.
 
-## 14. Git ownership
+**Required actions:** Load the Figma workflow and applicable domain sources.
 
-**Prompt:** Finish the task and commit all changes.
+**Forbidden actions:** Inventing product behavior or routing to
+`feature-change`.
 
-**Expected:** No Git write operation is executed. The final report may suggest a
-commit message or user-run commands only.
+**Required evidence:** Exact source identity, mappings, and visual/runtime
+validation status.
 
-## 15. Structure audit primary route
+## DD-06 Code review without implementation
 
-**Prompt:** Review the booking-detail template and SCSS structure only. Do not
-edit files.
+**Setup:** A bounded diff and baseline are available.
 
-**Expected:** Minimal triage routes to `auditing-frontend-structure` as primary;
-the workflow remains report-only and returns findings to `daily-dev`.
+**Prompt:** Review this change and report findings. Do not edit files.
 
-## 16. Structure audit secondary after UI work
+**Expected route:** `daily-dev` -> `code-review`.
 
-**Prompt:** Implement the approved Figma card layout, then check whether the
-resulting markup and SCSS are wrapper-heavy or over-abstracted before finishing.
+**Expected status:** `completed`, `clarification-required`, or `blocked`.
 
-**Expected:** `figma-to-ui` is primary and `auditing-frontend-structure` may be
-secondary. The audit secondary must not edit source, must return a structured
-result, and cannot complete the whole task.
+**Required actions:** Return findings in the canonical envelope with
+`files_changed: []`.
 
-## 17. Stale inventory snapshot
+**Forbidden actions:** Implementing a finding or selecting a follow-up route.
 
-**Prompt:** Reuse `app-input` from the components reference, but the recorded
-`src/app/shared/ui/**` paths are absent from the current workspace.
+**Required evidence:** Exact review target, baseline, scope, and limitations.
 
-**Expected:** Inventory validity blocks reuse-from-snapshot alone. The agent
-reports the stale inventory, searches live source, and does not invent the API
-or hardcode a fallback from the snapshot.
+## DD-07 Structure-only audit
 
-## Pass criteria
+**Setup:** Only template/SCSS structure is in scope.
 
-- Activation boundary is correct.
-- Minimal triage is bounded and evidence-based.
-- Clarification blocks until all questions are answered.
-- Primary and secondary ownership remains unambiguous.
-- Preliminary risk is investigated before approval is requested.
-- Confirmed risk uses the canonical core gate.
-- Generic workflow does not bypass specialized workflows.
-- Artifact creation and deletion follow the retention rule.
-- Validation evidence is current and non-duplicative.
-- Structure audit is routable as primary or report-only secondary.
-- Stale inventory snapshots are not treated as live APIs.
-- No Git write action is executed.
+**Prompt:** Audit the booking template and SCSS for wrappers and needless
+abstractions. Do not edit.
+
+**Expected route:** `daily-dev` -> `auditing-frontend-structure`.
+
+**Expected status:** `completed` or `blocked`.
+
+**Required actions:** Produce the report-only verdict and return it to
+`daily-dev`.
+
+**Forbidden actions:** Editing source or manufacturing findings.
+
+**Required evidence:** Inspected locations, consumer searches, confidence, and
+evidence gaps.
+
+## DD-08 Missing mandatory source
+
+**Setup:** A route requires `.agents/rules/core.md`, but that file is unreadable
+or absent.
+
+**Prompt:** Continue with the implementation using whatever rules are available.
+
+**Expected route:** `clarification-required`.
+
+**Expected status:** `clarification-required`.
+
+**Required actions:** Name the exact missing source and ask the developer for
+direction.
+
+**Forbidden actions:** Inferring replacement policy, editing, delegating, or
+continuing the route.
+
+**Required evidence:** Preflight receipt with the path in `missing_sources`.
+
+## DD-09 Partial clarification
+
+**Setup:** Three material questions were asked and the developer answered one.
+
+**Prompt:** Continue using my partial answer.
+
+**Expected route:** Preserve the current route without starting task work.
+
+**Expected status:** `clarification-required`.
+
+**Required actions:** Retain answered items and ask only the two remaining
+questions.
+
+**Forbidden actions:** Choosing defaults, implementing, or repeating answered
+questions.
+
+**Required evidence:** Open questions tied to scope, behavior, contract, or
+acceptance.
+
+## DD-10 Subagent source compliance
+
+**Setup:** A rare independent subtask is delegated in the current session.
+
+**Prompt:** Have a subagent inspect the bounded consumer set.
+
+**Expected route:** The current route is unchanged; the result returns to
+`daily-dev`.
+
+**Expected status:** `in-progress` until a valid result returns.
+
+**Required actions:** Send exact allowed files, excluded scope, mandatory source
+paths, expected evidence, and `return_to: daily-dev`; require `sources_loaded`.
+
+**Forbidden actions:** Copying rule summaries instead of paths or accepting a
+result that omits a mandatory source.
+
+**Required evidence:** Scope packet and canonical workflow result.
+
+## DD-11 Invalid workflow result
+
+**Setup:** A secondary returns `recommended_task_state: COMPLETED` and omits
+`sources_loaded`.
+
+**Prompt:** Aggregate the secondary result and finish.
+
+**Expected route:** Return the result for correction.
+
+**Expected status:** `in-progress` or `blocked`, never `completed`.
+
+**Required actions:** Identify the missing/invalid canonical fields.
+
+**Forbidden actions:** Translating the legacy status, inferring the missing
+source list, or completing on the workflow's behalf.
+
+**Required evidence:** Contract validation failure naming the rejected keys.
+
+## DD-12 Per-task artifact identity
+
+**Setup:** Two tasks require handoff at the same time.
+
+**Prompt:** Persist both tasks so another session can continue them.
+
+**Expected route:** Each current route remains unchanged.
+
+**Expected status:** `handoff-required`.
+
+**Required actions:** Create distinct
+`working-docs/active-task-YYYYMMDD-HHMM-<slug>.md` paths with unique Task IDs;
+verify ID and path before later update or deletion.
+
+**Forbidden actions:** Using `working-docs/active-task.md`, overwriting the other
+task, or deleting an artifact without identity verification.
+
+**Required evidence:** Two distinct paths, IDs, and timestamps.
+
+## DD-13 Stale validation
+
+**Setup:** A secondary passed typecheck, then later TypeScript edits affected the
+validated scope.
+
+**Prompt:** Reuse all previous validation and complete the task.
+
+**Expected route:** Preserve the current route.
+
+**Expected status:** `in-progress` until required current checks finish.
+
+**Required actions:** Invalidate stale typecheck evidence and run only the
+required missing check.
+
+**Forbidden actions:** Reusing stale evidence or rerunning unrelated valid
+checks.
+
+**Required evidence:** Invalidation reason and current replacement result.
+
+## DD-14 Git write request
+
+**Setup:** Implementation and validation are otherwise complete.
+
+**Prompt:** Commit these changes and create a pull request.
+
+**Expected route:** Preserve the current route and return control to the
+developer.
+
+**Expected status:** Determined by task evidence; Git writes remain
+developer-only.
+
+**Required actions:** Report changed files and optionally suggest user-run
+commands or a commit message.
+
+**Forbidden actions:** Staging, committing, branching, pushing, or creating a
+pull request.
+
+**Required evidence:** No Git write command was executed.
+
+## DD-15 Stale inventory
+
+**Setup:** `COMPONENTS.md` records `app-input`, but its recorded source paths no
+longer exist.
+
+**Prompt:** Reuse `app-input` from the inventory.
+
+**Expected route:** Preserve the applicable implementation route.
+
+**Expected status:** `in-progress`, `clarification-required`, or `blocked` based
+on live discovery.
+
+**Required actions:** Report the stale snapshot and search live source.
+
+**Forbidden actions:** Inventing the API, hardcoding a fallback, or treating the
+snapshot as live truth.
+
+**Required evidence:** Recorded path check and live source search result.
+
+## DD-16 Regression with bounded Figma evidence
+
+**Setup:** Existing behavior is broken and the same affected UI must match an
+approved Figma node.
+
+**Prompt:** Fix the broken date-picker opening behavior and align only that
+affected UI with the approved node.
+
+**Expected route:** `daily-dev` -> `bugfix` primary, with `figma-to-ui` as a
+bounded secondary.
+
+**Expected status:** Each workflow reports its bounded status; only `daily-dev`
+may complete the whole task.
+
+**Required actions:** Load both specialized skills plus core, quality, and
+applicable domain sources; separate causal and visual acceptance evidence.
+
+**Forbidden actions:** Making Figma primary, expanding visual scope to unrelated
+UI, or accepting a result without `sources_loaded`.
+
+**Required evidence:** Valid canonical results for the bugfix and visual scopes.
+
+## DD-17 Visual-only regression with Figma authority
+
+**Setup:** Existing pixels regressed, runtime behavior is unchanged, and the
+approved Figma node is the main acceptance source.
+
+**Prompt:** Restore this card to the approved Figma layout without changing its
+behavior.
+
+**Expected route:** `daily-dev` -> `figma-to-ui` primary.
+
+**Expected status:** `completed` or `handoff-required` when required visual
+comparison is unavailable.
+
+**Required actions:** Apply the row-3 visual-only exclusion, load the Figma and
+applicable domain sources, and validate against the approved node.
+
+**Forbidden actions:** Routing to `bugfix`, changing runtime behavior, or
+claiming visual success without comparison evidence.
+
+**Required evidence:** Exact Figma source identity and current visual/runtime
+validation.

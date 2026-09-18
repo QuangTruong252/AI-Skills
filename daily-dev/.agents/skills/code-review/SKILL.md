@@ -39,7 +39,8 @@ The reviewer MAY:
 
 The reviewer MUST NOT:
 
-- modify code, tests, configuration, documentation, generated output, or task artifacts except an explicitly required review handoff artifact;
+- modify code, tests, configuration, documentation, generated output, reports,
+  or task artifacts;
 - stage, commit, push, merge, rebase, tag, switch branches, or create pull requests;
 - transform a finding into an implementation patch unless the developer separately starts an implementation task;
 - treat a combined review-and-implementation request as implicit permission to edit.
@@ -74,7 +75,10 @@ code_review_input:
 
 A baseline MAY be working tree versus `HEAD`, staged changes versus `HEAD`, an explicit commit range, a pull-request base and head, an approved plan, or the current state of a bounded audit target.
 
-Do not assume `HEAD~1` or another arbitrary baseline. When target or baseline cannot be determined objectively, return `WAITING_FOR_CLARIFICATION`. When required access is unavailable and no evidence-preserving fallback exists, return `BLOCKED`.
+Do not assume `HEAD~1` or another arbitrary baseline. When target or baseline
+cannot be determined objectively, return `clarification-required`. When
+required access is unavailable and no evidence-preserving fallback exists,
+return `blocked`.
 
 ## Review modes
 
@@ -137,7 +141,7 @@ RESOLVE TARGET AND BASELINE
 → RETURN RESULT TO DAILY-DEV
 ```
 
-Exit states are `COMPLETED`, `WAITING_FOR_CLARIFICATION`, `BLOCKED`, and `HANDOFF_REQUIRED`.
+Use only the canonical lower-case statuses defined by `daily-dev`.
 
 ## Scope and discovery
 
@@ -353,45 +357,35 @@ P2 and P3 do not automatically block. Explain whether each should be handled in 
 
 ## Task artifact
 
-Create or update `working-docs/active-task.md` only when the review is secondary, a blocker or handoff exists, work must survive a session or model boundary, or the developer explicitly requests persistence.
+`daily-dev` alone decides whether a per-task artifact is required. Never create
+or update the legacy singleton `working-docs/active-task.md`.
 
-Do not persist raw diffs, secrets, sensitive payloads, or long command output. Preserve only the review target, baseline, scope, findings, limitations, evidence, and next action required by `daily-dev`.
+Return any requested handoff content to `daily-dev`; `code-review` does not
+persist it. Do not return raw diffs, secrets, sensitive payloads, or long
+command output. Preserve only the review target, baseline, scope, findings,
+limitations, evidence, and next action required by `daily-dev`.
 
 ## Result and return
 
 Use [`templates/code-review-result.md`](templates/code-review-result.md).
 
 ```yaml
-code_review_result:
-  workflow_scope:
-    mode: primary | secondary
-    review_mode: change-review | targeted-audit | evidence-review
-    status: completed | blocked | clarification-required | handoff-required
-  target:
-    baseline:
-    head:
-    files_reviewed: []
-    directly_affected_flow: []
-    consumers_reviewed: []
-    excluded_scope: []
-  acceptance:
-    sources: []
-    limitations: []
-  findings:
-    p0: []
-    p1: []
-    p2: []
-    p3: []
-  questions_or_required_verification: []
+workflow_result:
+  workflow: code-review
+  role: primary | secondary
+  status: in-progress | completed | clarification-required | approval-required | blocked | handoff-required
+  sources_loaded: []
+  scope_completed: []
+  files_changed: []
   validation:
-    evidence_reused: []
-    commands_run: []
-    not_verified: []
-  assessment:
-    outcome: ready | changes-required | blocked
-    reason:
-    recommended_follow_up: []
+    - <review evidence>
+  open_items:
+    - <findings, limitations, or probable follow-up route>
   return_to: daily-dev
 ```
 
-A finding that requires implementation MUST name the probable route and return ownership to `daily-dev`. This workflow never implements the resolution or selects the final route.
+`files_changed` must remain empty. Nest the detailed target, findings, and
+assessment under `scope_completed` or `open_items` as shown by the template. A
+finding that requires implementation MUST name the probable route and return
+ownership to `daily-dev`. This workflow never implements the resolution or
+selects the final route.

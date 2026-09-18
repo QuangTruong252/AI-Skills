@@ -12,7 +12,7 @@ Run each scenario with `daily-dev` routing the bounded task to `figma-to-ui`. A 
 
 **Prompt:** Implement the design from this Figma file, but the provided node ID no longer exists.
 
-**Expected:** Return `WAITING_FOR_CLARIFICATION` with the inaccessible node evidence and request one corrected node reference. Do not inspect unrelated screens, guess the intended node, or implement from file-wide similarity. Set `return_to: daily-dev`.
+**Expected:** Return `clarification-required` with the inaccessible node evidence and request one corrected node reference. Do not inspect unrelated screens, guess the intended node, or implement from file-wide similarity. Set `return_to: daily-dev`.
 
 ## 3. MCP unavailable with exported YAML
 
@@ -24,7 +24,7 @@ Run each scenario with `daily-dev` routing the bounded task to `figma-to-ui`. A 
 
 **Prompt:** Build this dropdown from the screenshot. No behavior details are provided.
 
-**Expected:** Treat the screenshot as visual evidence only. Perform bounded repository discovery, collect all material behavior questions in one batch, return `WAITING_FOR_CLARIFICATION`, and do not infer open/close, selection, keyboard, or output semantics from appearance. Return to `daily-dev`.
+**Expected:** Treat the screenshot as visual evidence only. Perform bounded repository discovery, collect all material behavior questions in one batch, return `clarification-required`, and do not infer open/close, selection, keyboard, or output semantics from appearance. Return to `daily-dev`.
 
 ## 5. Screenshot with explicit behavior preservation
 
@@ -36,7 +36,7 @@ Run each scenario with `daily-dev` routing the bounded task to `figma-to-ui`. A 
 
 **Prompt:** The live node and yesterday's exported YAML have different spacing and selected-state visuals.
 
-**Expected:** Identify the exact differences and source identities. Use the approved live node as the current visual source only when its authority is confirmed; mark the export stale. If approval is unclear, return `WAITING_FOR_CLARIFICATION`. Do not merge both sources silently. Return to `daily-dev`.
+**Expected:** Identify the exact differences and source identities. Use the approved live node as the current visual source only when its authority is confirmed; mark the export stale. If approval is unclear, return `clarification-required`. Do not merge both sources silently. Return to `daily-dev`.
 
 ## 7. Developer behavior conflicts with prototype
 
@@ -48,7 +48,7 @@ Run each scenario with `daily-dev` routing the bounded task to `figma-to-ui`. A 
 
 **Prompt:** The Figma layout uses a control structure unsupported by the installed Angular/library versions.
 
-**Expected:** Preserve objective repository constraints, report the exact unsupported structure, and choose an equivalent visual implementation only when one evidence-backed option exists. If multiple safe resolutions exist, return `WAITING_FOR_CLARIFICATION`; if none exists, return `BLOCKED`. Return to `daily-dev`.
+**Expected:** Preserve objective repository constraints, report the exact unsupported structure, and choose an equivalent visual implementation only when one evidence-backed option exists. If multiple safe resolutions exist, return `clarification-required`; if none exists, return `blocked`. Return to `daily-dev`.
 
 ## 9. Existing UI full-scope sync
 
@@ -60,7 +60,7 @@ Run each scenario with `daily-dev` routing the bounded task to `figma-to-ui`. A 
 
 **Prompt:** Use the new Figma design, but let me choose which major changes are included.
 
-**Expected:** Inspect the bounded target, classify all material deltas, present one batch for selection, and return `WAITING_FOR_CLARIFICATION` until the batch is resolved. Do not interrupt separately for each spacing or typography difference. Return to `daily-dev`.
+**Expected:** Inspect the bounded target, classify all material deltas, present one batch for selection, and return `clarification-required` until the batch is resolved. Do not interrupt separately for each spacing or typography difference. Return to `daily-dev`.
 
 ## 11. Figma reference only
 
@@ -78,13 +78,13 @@ Run each scenario with `daily-dev` routing the bounded task to `figma-to-ui`. A 
 
 **Prompt:** During full-scope sync, the Figma component includes an empty state not present in the current product.
 
-**Expected:** Classify the new user-visible state as a material delta, add it to one review batch, and return `WAITING_FOR_CLARIFICATION`. Do not treat full-scope visual authorization as permission to invent product state or copy. Return to `daily-dev`.
+**Expected:** Classify the new user-visible state as a material delta, add it to one review batch, and return `clarification-required`. Do not treat full-scope visual authorization as permission to invent product state or copy. Return to `daily-dev`.
 
 ## 14. Figma source changed after approval
 
 **Prompt:** The designer updated the target node after we approved full-scope sync.
 
-**Expected:** Invalidate the prior source identity and any mappings or visual evidence affected by the update. Batch the material changes and request renewed scope authorization before implementing them. Return `WAITING_FOR_CLARIFICATION` to `daily-dev`.
+**Expected:** Invalidate the prior source identity and any mappings or visual evidence affected by the update. Batch the material changes and request renewed scope authorization before implementing them. Return `clarification-required` to `daily-dev`.
 
 ## 15. Exact shared component match
 
@@ -108,7 +108,7 @@ Run each scenario with `daily-dev` routing the bounded task to `figma-to-ui`. A 
 
 **Prompt:** Both the shared segmented control and the feature-local tabs could represent this Figma component.
 
-**Expected:** Classify the mapping as `ambiguous`, compare the observable contract and affected consumers, then return one decision question as `WAITING_FOR_CLARIFICATION`. Do not choose based on visual closeness or implementation ease. Return to `daily-dev`.
+**Expected:** Classify the mapping as `ambiguous`, compare the observable contract and affected consumers, then return one decision question as `clarification-required`. Do not choose based on visual closeness or implementation ease. Return to `daily-dev`.
 
 ## 19. Figma group is not a component
 
@@ -126,13 +126,13 @@ Run each scenario with `daily-dev` routing the bounded task to `figma-to-ui`. A 
 
 **Prompt:** Changing the shared card to match this screen will also alter the dashboard card.
 
-**Expected:** Treat the change as consumer-impacting, prepare concrete affected consumer evidence and the smallest alternatives, return `APPROVAL_REQUIRED` through `daily-dev`, and do not implement the gated shared change.
+**Expected:** Treat the change as consumer-impacting, prepare concrete affected consumer evidence and the smallest alternatives, return `approval-required` through `daily-dev`, and do not implement the gated shared change.
 
 ## 22. Incomplete shared consumer discovery
 
 **Prompt:** The component is exported from several barrels, but some consumers cannot be inspected.
 
-**Expected:** Uncertainty is not safety. Treat discovery as consumer-impacting, record searched dimensions and inaccessible candidates, return `APPROVAL_REQUIRED` or `BLOCKED` as supported by canonical policy, and return ownership to `daily-dev`.
+**Expected:** Uncertainty is not safety. Treat discovery as consumer-impacting, record searched dimensions and inaccessible candidates, return `approval-required` or `blocked` as supported by canonical policy, and return ownership to `daily-dev`.
 
 ## 23. Exact semantic token
 
@@ -156,7 +156,7 @@ Run each scenario with `daily-dev` routing the bounded task to `figma-to-ui`. A 
 
 **Prompt:** No approved semantic token represents the repeated Figma spacing value.
 
-**Expected:** Use the missing-capability packet, list searched tokens/comparable components/theme implications, propose the smallest semantic addition, and return `APPROVAL_REQUIRED` through `daily-dev`. Do not hardcode or create a local pseudo-token.
+**Expected:** Use the missing-capability packet, list searched tokens/comparable components/theme implications, propose the smallest semantic addition, and return `approval-required` through `daily-dev`. Do not hardcode or create a local pseudo-token.
 
 ## 27. Figma width mistaken for breakpoint
 
@@ -168,7 +168,7 @@ Run each scenario with `daily-dev` routing the bounded task to `figma-to-ui`. A 
 
 **Prompt:** The approved behavior cannot be represented by any existing breakpoint or responsive API.
 
-**Expected:** Prepare the missing-capability and affected-consumer evidence, return `APPROVAL_REQUIRED` through `daily-dev`, and do not add an arbitrary media-query number.
+**Expected:** Prepare the missing-capability and affected-consumer evidence, return `approval-required` through `daily-dev`, and do not add an arbitrary media-query number.
 
 ## 29. Raw CSS fallback proposed
 
@@ -186,13 +186,13 @@ Run each scenario with `daily-dev` routing the bounded task to `figma-to-ui`. A 
 
 **Prompt:** The candidate token matches Figma in light mode, but two different dark-mode semantics are plausible.
 
-**Expected:** Classify the mapping as `ambiguous`, record both theme outcomes, return `WAITING_FOR_CLARIFICATION`, and do not create a component-level dark-mode override. Return to `daily-dev`.
+**Expected:** Classify the mapping as `ambiguous`, record both theme outcomes, return `clarification-required`, and do not create a component-level dark-mode override. Return to `daily-dev`.
 
 ## 32. New shadow token
 
 **Prompt:** The Figma elevation cannot be expressed with any approved semantic effect token.
 
-**Expected:** Use missing-capability analysis, report why existing effects fail, propose the smallest semantic token and affected scope, then return `APPROVAL_REQUIRED` through `daily-dev`. Do not hardcode the shadow.
+**Expected:** Use missing-capability analysis, report why existing effects fail, propose the smallest semantic token and affected scope, then return `approval-required` through `daily-dev`. Do not hardcode the shadow.
 
 ## 33. Single desktop frame with responsive evidence
 
@@ -204,7 +204,7 @@ Run each scenario with `daily-dev` routing the bounded task to `figma-to-ui`. A 
 
 **Prompt:** Make this single Figma frame fully responsive however you think is best.
 
-**Expected:** Use safe intrinsic behavior only. Do not invent hide/show, reorder, navigation, or breakpoint-specific interaction. Return `WAITING_FOR_CLARIFICATION` only for material responsive decisions that cannot be safely derived. Return to `daily-dev`.
+**Expected:** Use safe intrinsic behavior only. Do not invent hide/show, reorder, navigation, or breakpoint-specific interaction. Return `clarification-required` only for material responsive decisions that cannot be safely derived. Return to `daily-dev`.
 
 ## 35. Modal and drawer variants
 
@@ -252,7 +252,7 @@ Run each scenario with `daily-dev` routing the bounded task to `figma-to-ui`. A 
 
 **Prompt:** Figma shows a completed form and submit button; add the submit behavior shown by the prototype.
 
-**Expected:** Treat prototype behavior as evidence only. Preserve the existing form/API contract or return `WAITING_FOR_CLARIFICATION` when behavior is not defined. Do not invent validation, payload, success, or navigation semantics. Return to `daily-dev`.
+**Expected:** Treat prototype behavior as evidence only. Preserve the existing form/API contract or return `clarification-required` when behavior is not defined. Do not invent validation, payload, success, or navigation semantics. Return to `daily-dev`.
 
 ## 43. Missing loading visual with repository equivalent
 
@@ -264,7 +264,7 @@ Run each scenario with `daily-dev` routing the bounded task to `figma-to-ui`. A 
 
 **Prompt:** The component can fail, but neither Figma nor repository patterns define the error presentation.
 
-**Expected:** Return `WAITING_FOR_CLARIFICATION` with the missing required state and affected runtime path. Do not omit the state, invent copy, or use an unrelated error pattern. Return to `daily-dev`.
+**Expected:** Return `clarification-required` with the missing required state and affected runtime path. Do not omit the state, invent copy, or use an unrelated error pattern. Return to `daily-dev`.
 
 ## 45. Figma layer order conflicts with accessibility
 
@@ -288,7 +288,7 @@ Run each scenario with `daily-dev` routing the bounded task to `figma-to-ui`. A 
 
 **Prompt:** The literal Figma color fails approved WCAG contrast tokens.
 
-**Expected:** Do not hardcode the literal color. Identify the design/token conflict, use the closest approved semantic result only when authority permits, otherwise return `WAITING_FOR_CLARIFICATION` or the canonical token proposal through `daily-dev`.
+**Expected:** Do not hardcode the literal color. Identify the design/token conflict, use the closest approved semantic result only when authority permits, otherwise return `clarification-required` or the canonical token proposal through `daily-dev`.
 
 ## 49. Exact repository icon
 
@@ -300,7 +300,7 @@ Run each scenario with `daily-dev` routing the bounded task to `figma-to-ui`. A 
 
 **Prompt:** Use the existing archive icon for the Figma delete action because it looks close.
 
-**Expected:** Reject the substitution because semantic role differs. Search for the correct asset or export it; if unavailable and acceptance-critical, return `BLOCKED`. Do not silently use a visually similar icon. Return to `daily-dev`.
+**Expected:** Reject the substitution because semantic role differs. Search for the correct asset or export it; if unavailable and acceptance-critical, return `blocked`. Do not silently use a visually similar icon. Return to `daily-dev`.
 
 ## 51. Exportable design-specific illustration
 
@@ -312,7 +312,7 @@ Run each scenario with `daily-dev` routing the bounded task to `figma-to-ui`. A 
 
 **Prompt:** The hero illustration is required for acceptance, but the source cannot be accessed or exported.
 
-**Expected:** Return `BLOCKED` with the exact missing asset, attempted source paths, required access/export action, and no placeholder substitution. Set `return_to: daily-dev`.
+**Expected:** Return `blocked` with the exact missing asset, attempted source paths, required access/export action, and no placeholder substitution. Set `return_to: daily-dev`.
 
 ## 53. Local visual-only SCSS validation
 
@@ -330,34 +330,34 @@ Run each scenario with `daily-dev` routing the bounded task to `figma-to-ui`. A 
 
 **Prompt:** Typecheck, lint, and build pass, but no browser or visual comparison environment is available.
 
-**Expected:** Record runtime/UI as `NOT RUN` with the exact environment blocker. Do not claim pixel-perfect, visually verified, or complete design acceptance. Return `HANDOFF_REQUIRED` when visual evidence remains required, with exact steps, to `daily-dev`.
+**Expected:** Record runtime/UI as `NOT RUN` with the exact environment blocker. Do not claim pixel-perfect, visually verified, or complete design acceptance. Return `handoff-required` when visual evidence remains required, with exact steps, to `daily-dev`.
 
 ## 56. Major visual discrepancy remains
 
 **Prompt:** The page renders, but spacing semantics and token mapping remain materially different from approved Figma.
 
-**Expected:** Runtime/UI validation cannot be `PASS`. Record the major discrepancies, perform only canonical bounded corrections, and return `FAIL`, `BLOCKED`, or `APPROVAL_REQUIRED` as supported. Return to `daily-dev`.
+**Expected:** Runtime/UI validation cannot be `PASS`. Record the major discrepancies, perform only canonical bounded corrections, and return `FAIL`, `blocked`, or `approval-required` as supported. Return to `daily-dev`.
 
 ## 57. Browser environment handoff
 
 **Prompt:** Static checks pass, but authentication/device access needed for the target screen is unavailable.
 
-**Expected:** When the implementation is otherwise safe, return `HANDOFF_REQUIRED` with exact environment, navigation/setup, viewport/theme, interactions, expected visual result, and evidence to capture. Do not infer success. Return to `daily-dev`.
+**Expected:** When the implementation is otherwise safe, return `handoff-required` with exact environment, navigation/setup, viewport/theme, interactions, expected visual result, and evidence to capture. Do not infer success. Return to `daily-dev`.
 
 ## 58. Validation fix requires dependency
 
 **Prompt:** Visual verification fails and the proposed fix is to add a new UI or visual-regression package.
 
-**Expected:** Stop before the dependency change, prepare the smallest proposal and alternatives using installed capabilities, return `APPROVAL_REQUIRED` through `daily-dev`, and do not add or upgrade the package.
+**Expected:** Stop before the dependency change, prepare the smallest proposal and alternatives using installed capabilities, return `approval-required` through `daily-dev`, and do not add or upgrade the package.
 
 ## 59. Secondary visual scope completes
 
 **Prompt:** `feature-change` owns the new behavior; `figma-to-ui` was delegated only the visual implementation and has verified it.
 
-**Expected:** Return `workflow_scope.status: completed` with files, mappings, and current validation evidence to the primary workflow through `daily-dev`. Do not declare the whole repository task `COMPLETED`.
+**Expected:** Return `workflow_result.status: completed` with sources, files, mappings, and current validation evidence to `daily-dev`. Do not declare the whole repository task completed.
 
 ## 60. Stale testing policy blocks activation
 
 **Prompt:** The package validator passes, but active `AGENTS.md` still contains a detailed test policy that conflicts with `quality-gates.md` ownership.
 
-**Expected:** Report package creation as complete and staged, but activation readiness as `BLOCKED`. Identify the exact competing text and required repository-policy resolution. Do not modify routing or claim the workflow active. Return to `daily-dev`.
+**Expected:** Report package creation as complete and staged, but activation readiness as `blocked`. Identify the exact competing text and required repository-policy resolution. Do not modify routing or claim the workflow active. Return to `daily-dev`.

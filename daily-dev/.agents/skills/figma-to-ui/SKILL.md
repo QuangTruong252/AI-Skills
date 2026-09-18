@@ -64,7 +64,7 @@ INTAKE
 → RETURN RESULT TO DAILY-DEV
 ```
 
-Exit states are `COMPLETED`, `WAITING_FOR_CLARIFICATION`, `APPROVAL_REQUIRED`, `BLOCKED`, and `HANDOFF_REQUIRED`.
+Use only the canonical lower-case statuses defined by `daily-dev`.
 
 ## Source authority
 
@@ -122,8 +122,8 @@ figma_source:
 ```yaml
 input_status:
   sufficient: continue
-  material-ambiguity: WAITING_FOR_CLARIFICATION
-  inaccessible-without-fallback: BLOCKED
+  material-ambiguity: clarification-required
+  inaccessible-without-fallback: blocked
   missing-optional-detail: continue-with-recorded-limitation
 ```
 
@@ -175,7 +175,7 @@ Token, breakpoint, global CSS, shared-component, public-contract, dependency, an
 mapping_status:
   exact: continue
   equivalent: continue-with-recorded-evidence
-  ambiguous: WAITING_FOR_CLARIFICATION
+  ambiguous: clarification-required
   missing: propose-smallest-resolution
 ```
 
@@ -232,7 +232,7 @@ Do not:
 - use a merely similar fallback without confirmation;
 - use inline base64 when the repository supports an appropriate asset workflow.
 
-If an acceptance-critical asset cannot be obtained, return `BLOCKED`.
+If an acceptance-critical asset cannot be obtained, return `blocked`.
 
 ## Responsive behavior
 
@@ -344,14 +344,21 @@ Before implementation, map each visual and behavioral acceptance criterion to a 
 Use [`templates/figma-to-ui-result.md`](templates/figma-to-ui-result.md).
 
 ```yaml
-figma_to_ui_result:
-  workflow_scope:
-    status: completed | approval-required | blocked | handoff-required
-  recommended_task_state: COMPLETED | WAITING_FOR_CLARIFICATION | APPROVAL_REQUIRED | BLOCKED | HANDOFF_REQUIRED
+workflow_result:
+  workflow: figma-to-ui
+  role: primary | secondary
+  status: in-progress | completed | clarification-required | approval-required | blocked | handoff-required
+  sources_loaded: []
+  scope_completed: []
+  files_changed: []
+  validation: []
+  open_items: []
   return_to: daily-dev
 ```
 
-`workflow_scope.status: completed` verifies only the assigned visual scope. It does not close the repository task while another workflow, approval, blocker, handoff, or acceptance criterion remains.
+Nest visual mapping and acceptance evidence under the canonical fields; do not
+emit a separate recommended task state. `completed` verifies only the assigned
+visual scope. `daily-dev` owns the whole-task status.
 
 ## Repository safety
 

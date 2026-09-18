@@ -54,7 +54,7 @@ bugfix_intake:
 ```
 
 If expected behavior, scope, acceptance, or source of truth is materially
-ambiguous, return `WAITING_FOR_CLARIFICATION` to `daily-dev` before editing.
+ambiguous, return `clarification-required` to `daily-dev` before editing.
 
 ## Workflow
 
@@ -101,7 +101,7 @@ static causal path whose preconditions are verified.
 - `reproduced`: the failure is observed directly.
 - `evidence-backed`: direct execution is unavailable, but the failure path is
   supported by concrete evidence.
-- `not-established`: evidence is insufficient; return `BLOCKED`.
+- `not-established`: evidence is insufficient; return `blocked`.
 
 For multiple symptoms, reproduce and trace them separately. Group symptoms only
 when evidence shows a shared causal chain. Independent symptoms require an
@@ -195,11 +195,11 @@ completion.
 
 Do not perform destructive or irreversible reproduction, including real data
 deletion, payment, permission mutation, production write, or external side
-effect. Stop and return `HANDOFF_REQUIRED` with exact developer-run verification
+effect. Stop and return `handoff-required` with exact developer-run verification
 steps.
 
 Do not edit generated, vendor, or third-party code. When the causal failure is
-owned by such code, record the evidence and return `BLOCKED` to `daily-dev` with
+owned by such code, record the evidence and return `blocked` to `daily-dev` with
 the owning generator, package, or upstream action when known. A generator,
 schema, dependency, or integration workaround requires a separately routed task.
 
@@ -264,8 +264,8 @@ response.
 
 Collect browser, version, OS, device, viewport, computed-style, DOM, and state
 evidence. Preserve behavior in unaffected environments. Without the target
-environment, return `HANDOFF_REQUIRED` when strong evidence supports the fix;
-return `BLOCKED` when evidence is insufficient.
+environment, return `handoff-required` when strong evidence supports the fix;
+return `blocked` when evidence is insufficient.
 
 Prefer a standards-based root-cause fix. Use a browser-specific workaround only
 when the standard fix is not feasible, the condition is narrowly targeted, the
@@ -283,7 +283,7 @@ schema changes, business-default guesses, or broad multi-consumer work return to
 For production-only data, identify the minimum failure characteristics and use
 sanitized synthetic data. Never request or store production dumps, credentials,
 or sensitive payloads. If safe reproduction remains unavailable, return
-`HANDOFF_REQUIRED` with exact developer verification steps.
+`handoff-required` with exact developer verification steps.
 
 ### User-visible loading and error states
 
@@ -317,26 +317,22 @@ For each in-scope failure, use at most two targeted correction-and-rerun cycles
 as defined by `quality-gates.md`. Each cycle must revise the hypothesis, make one
 targeted correction, and replay relevant validation. After two failed cycles,
 return to `daily-dev` to reassess classification, scope, risk, and acceptance. If
-routing remains valid, return `BLOCKED`.
+routing remains valid, return `blocked`.
 
 Existing tests that conflict with the reported expectation create an acceptance
 conflict. Stop editing and return to `daily-dev` to resolve the authoritative
 source before changing production code or tests.
 
-## Exit states and completion
+## Result and completion
 
-Return one of:
+Use [`templates/bugfix-result.md`](templates/bugfix-result.md) and the canonical
+`workflow_result` envelope defined by `daily-dev`. Use only canonical lower-case
+statuses and always set `return_to: daily-dev`.
 
-- `completed`: the causal failure and accepted behavior are fully verified.
-- `approval-required`: a concrete proposal awaits developer approval.
-- `handoff-required`: implementation or investigation is complete, but the
-  developer must perform a specific safe validation step unavailable to the
-  agent.
-- `blocked`: evidence, ownership, risk, or validation cannot be resolved safely.
-
-`HANDOFF_REQUIRED` must contain exact steps, required environment or access,
-expected result, and remaining uncertainty. Do not claim the bug is fixed when
-the original runtime path is `NOT RUN`.
+Put bug-specific evidence inside `scope_completed`, `validation`, and
+`open_items`. A handoff item must include exact steps, required environment or
+access, expected result, and remaining uncertainty. Do not claim the bug is
+fixed when the original runtime path is `NOT RUN`.
 
 Completion requires all of the following:
 
@@ -348,8 +344,9 @@ Completion requires all of the following:
 - no ambiguity, approval, blocker, or secondary ownership remains;
 - remaining risks and limitations are explicitly reported.
 
-Use [`templates/bugfix-result.md`](templates/bugfix-result.md) for the return
-contract. `daily-dev` owns the final repository report and task exit state.
+`completed` means only that the delegated `bugfix` scope is verified.
+`daily-dev` validates the returned envelope and owns the final repository report
+and whole-task status.
 
 ## Repository safety
 

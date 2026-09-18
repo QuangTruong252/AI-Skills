@@ -155,27 +155,30 @@ return `CLEAN`; do not manufacture advice.
 A confirmed `P1` yields `NEEDS_ATTENTION`. `P2` and `P3` yield
 `CLEAN_WITH_SUGGESTIONS`.
 
-Default to chat. Persist the same report only when the developer explicitly
-requests persistence or when `working-docs/active-task.md` already exists for
-the current task. Write to
-`working-docs/reports/YYYY-MM-DD-<task-slug>-frontend-structure.md` and link it
-from the active task artifact. Do not persist raw tool output or duplicate the
-report.
+Default to chat. Return the complete report content to `daily-dev`.
+`auditing-frontend-structure` does not write a report or task artifact. When the
+developer requests persistence, `daily-dev` writes the returned content using
+the verified Task ID and links it from the matching task artifact. Do not
+return raw tool output or duplicate the report.
 
 ## Return to daily-dev
 
 ```yaml
-secondary_result:
+workflow_result:
   workflow: auditing-frontend-structure
-  status: completed | blocked
+  role: primary | secondary
+  status: in-progress | completed | clarification-required | approval-required | blocked | handoff-required
+  sources_loaded: []
+  scope_completed:
+    - verdict: CLEAN | CLEAN_WITH_SUGGESTIONS | NEEDS_ATTENTION
   files_changed: []
-  behavior_changed: []
   validation: []
-  discovered_risks: []
-  scope_deviations: []
-  verdict: CLEAN | CLEAN_WITH_SUGGESTIONS | NEEDS_ATTENTION
+  open_items: []
   return_to: daily-dev
 ```
+
+This report-only workflow must keep `files_changed` empty. `completed` applies
+only to the assigned audit scope.
 
 Recommended follow-up for confirmed structural defects is a separately routed
 `feature-change` or `bugfix` task. This workflow never implements the fix.

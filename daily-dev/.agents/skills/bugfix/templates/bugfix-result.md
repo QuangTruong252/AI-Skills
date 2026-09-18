@@ -1,52 +1,42 @@
 # Bugfix Result
 
 ```yaml
-bugfix_result:
-  status: completed | approval-required | blocked | handoff-required
-
-  expected_behavior:
-  observed_behavior:
-  acceptance_source:
-
-  reproduction:
-    status: reproduced | evidence-backed | not-established
-    steps_or_conditions: []
-    evidence: []
-    environment_limitations: []
-
-  root_cause:
-    status: confirmed | strong-hypothesis | disproved
-    hypothesis:
-    supporting_evidence: []
-    competing_explanations: []
-
-  scope:
-    inspected_flow: []
-    consumers_checked: []
-    files_changed: []
-    scope_expansions: []
-
-  implementation:
-    selected_fix:
-    rejected_candidates: []
-    preventative_refactor_approved: false
-    regression_test_approved: false
-    browser_workaround:
-
+workflow_result:
+  workflow: bugfix
+  role: primary | secondary
+  status: in-progress | completed | clarification-required | approval-required | blocked | handoff-required
+  sources_loaded: []
+  scope_completed:
+    - expected_behavior:
+      observed_behavior:
+      acceptance_source:
+      reproduction:
+        status: reproduced | evidence-backed | not-established
+        evidence: []
+      root_cause:
+        status: confirmed | strong-hypothesis | disproved
+        hypothesis:
+        evidence: []
+      selected_fix:
+      consumers_checked: []
+      diagnostic_changes_removed: true
+  files_changed: []
   validation:
-    original_failure_path: PASS | FAIL | NOT RUN
-    affected_behavior: PASS | FAIL | NOT RUN
-    quality_gates: []
-    correction_cycles_used: 0
-
-  diagnostic_changes_removed: true
-  remaining_risks: []
-
-  developer_verification_required:
-    steps: []
-    environment_or_access:
-    expected_result:
-    remaining_uncertainty:
-
+    - check: original-failure-path
+      result: PASS | FAIL | NOT RUN
+      evidence: []
+    - check: affected-behavior
+      result: PASS | FAIL | NOT RUN
+      evidence: []
+    - check: applicable-quality-gates
+      result: PASS | FAIL | NOT RUN
+      evidence: []
+  open_items:
+    - type: clarification | approval | blocker | handoff | risk | scope-deviation
+      detail:
+      exact_steps: []
+      required_environment_or_access:
+      expected_result:
+      remaining_uncertainty:
   return_to: daily-dev
 ```

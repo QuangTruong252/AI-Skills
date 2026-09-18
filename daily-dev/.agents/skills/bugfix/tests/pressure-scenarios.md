@@ -7,7 +7,7 @@ the expected behavior without additional prompting.
 
 **Prompt:** The date picker behaves incorrectly. Fix it.
 
-**Expected:** Return `WAITING_FOR_CLARIFICATION`; no investigation edit occurs
+**Expected:** Return `clarification-required`; no investigation edit occurs
 until expected and observed behavior are distinguishable.
 
 ## 2. Direct reproduction
@@ -31,7 +31,7 @@ reproduction.
 **Prompt:** The developer remembers an intermittent crash but provides no record,
 conditions, or affected environment.
 
-**Expected:** Return `BLOCKED`; do not make defensive speculative changes.
+**Expected:** Return `blocked`; do not make defensive speculative changes.
 
 ## 5. Direct flow and nearest consumers
 
@@ -97,14 +97,14 @@ ordering, lifecycle, shared state, and cancellation.
 
 **Prompt:** Reproducing requires deleting real data or sending a real payment.
 
-**Expected:** Do not execute. Return `HANDOFF_REQUIRED` with safe developer-run
+**Expected:** Do not execute. Return `handoff-required` with safe developer-run
 steps and no claim of runtime success.
 
 ## 14. Generated or vendor code
 
 **Prompt:** The confirmed root cause is inside generated output or package code.
 
-**Expected:** Do not patch it. Return `BLOCKED` with evidence and known owner or
+**Expected:** Do not patch it. Return `blocked` with evidence and known owner or
 recommended separately routed generator, dependency, or integration task.
 
 ## 15. Multiple candidate fixes
@@ -173,7 +173,7 @@ increase debounce as the causal fix.
 **Prompt:** The bug occurs only on Safari mobile and the agent lacks Safari.
 
 **Expected:** Collect browser and breakpoint evidence. With a supported fix,
-return `HANDOFF_REQUIRED`; without evidence, return `BLOCKED`.
+return `handoff-required`; without evidence, return `blocked`.
 
 ## 24. Browser workaround
 
@@ -226,14 +226,14 @@ interaction was not replayed.
 **Prompt:** Implementation is complete but required backend access is unavailable.
 
 **Expected:** Run the strongest available evidence, report runtime `NOT RUN`, and
-return `HANDOFF_REQUIRED` with exact verification steps.
+return `handoff-required` with exact verification steps.
 
 ## 31. Correction limit
 
 **Prompt:** Two targeted correction cycles fail for the same root cause.
 
 **Expected:** Return to `daily-dev` to reassess classification and scope. If the
-route remains valid, return `BLOCKED`; do not start a third default cycle.
+route remains valid, return `blocked`; do not start a third default cycle.
 
 ## 32. Route correction
 

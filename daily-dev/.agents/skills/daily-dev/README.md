@@ -1,65 +1,63 @@
 # Daily Dev
 
-A thin repository-task orchestrator for predictable routing across coding
-agents and models. It performs bounded triage, blocks on unresolved requirements,
-coordinates primary and secondary workflows, applies canonical risk gates, and
-aggregates completion evidence without depending on Superpowers or a specific
-execution harness.
+A thin repository-task orchestrator designed for Codex, Antigravity, GPT, and
+Gemini. `AGENTS.md` bootstraps exact mandatory reading and ordered routing;
+`daily-dev` owns task state, workflow results, and completion.
 
 ## Package
 
 ```text
 daily-dev/
-├── SKILL.md
-├── README.md
-├── templates/
-│   └── active-task.md
-└── tests/
-    ├── pressure-scenarios.md
-    └── validate_skill.py
+|-- SKILL.md
+|-- README.md
+|-- templates/
+|   `-- active-task.md
+`-- tests/
+    |-- pressure-scenarios.md
+    `-- validate_skill.py
 ```
 
-Only `SKILL.md` defines the workflow. Canonical repository policy remains in
-`AGENTS.md`, `core.md`, domain rules, and `quality-gates.md`.
+Only `SKILL.md` defines this workflow. Canonical policy remains in `AGENTS.md`,
+`core.md`, applicable domain rules, and `quality-gates.md`.
 
-## Activation
+## Runtime model
 
-**Status: Active.** Repository `AGENTS.md` routes repository-related tasks to
-`.agents/skills/daily-dev/SKILL.md` as the mandatory orchestrator.
-
-## Specialized workflows
-
-`daily-dev` classifies tasks for these active workflows when routed by
-`AGENTS.md`:
-
-- `bugfix`
-- `feature-change`
-- `figma-to-ui`
-- `code-review`
-- `auditing-frontend-structure` (report-only; primary or secondary)
-
-Repository maintenance remains owned by `daily-dev` itself.
+- One main agent owns the whole task.
+- Specialized workflows return one canonical result to `daily-dev`.
+- Subagents are optional, rare, and bounded by exact source paths.
+- In-session state is the default for one-session tasks.
 
 ## Task persistence
 
-`working-docs/active-task.md` is conditional, not the default. It is created for
-multi-workflow tasks, pending approvals, blockers, handoffs, session boundaries,
-or explicit developer requests. It is deleted on completion unless the
-developer asks to retain it.
+Create a per-task artifact only for pending clarification or approval, blockers,
+handoffs, context transitions, or explicit developer requests:
+
+```text
+working-docs/active-task-YYYYMMDD-HHMM-<slug>.md
+```
+
+Use a second-level unique Task ID and an unused path; append a numeric slug
+suffix rather than overwrite a collision. The legacy singleton
+`working-docs/active-task.md` is not valid.
 
 ## Validation
 
-Run from the skill directory:
+Requires Python 3 standard library. Replace `python` with the host's Python 3
+interpreter path when it is not available on `PATH`.
 
-```text
-python tests/validate_skill.py
-```
-
-Or from the repository root:
+Run the structural validator from the repository root:
 
 ```text
 python scripts/validate-all.py
 ```
 
-Then execute the manual pressure scenarios in `tests/pressure-scenarios.md` in
-the target coding-agent environment.
+Run mutation tests:
+
+```text
+python scripts/test-validator-mutations.py
+```
+
+Structural validation checks contracts and cross-file consistency. It does not
+prove model compliance. Run the structured scenarios in
+`tests/pressure-scenarios.md` with fresh GPT/Gemini sessions for behavioral
+evidence; otherwise report behavioral evidence as `NOT RUN`.
